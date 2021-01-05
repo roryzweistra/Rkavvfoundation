@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+.home-slogan {
+    background: linear-gradient(
+      $image-overlay,
+      $image-overlay
+    ), url('/images/db-home-slogan.png');
+    text-align: center;
+    .container .hero .hero-body .container {
+        .title, .subtitle {
+            color: $dark-blue;
+            font-weight: bold;
+        }
+        .title {
+            font-size: 3.5em;
+            margin-bottom: 1.5em;
+        }
+        .subtitle {
+            font-size: 1.5em;
+        }
+        .db-button {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            padding: 30px;
+        }
+    }
+}
+
+.home-search-box {
+    background-color: $light-blue;
+    margin-top: -90px;
+    padding: 10px;
+    .field-label {
+        text-align: left;
+        padding-bottom: 5px;
+    }
+}
+
+.label.dark {
+    color: $dark-blue;
+    font-weight: bold;
+}
+
+.top-location-image {
+    background: linear-gradient(
+      $image-overlay,
+      $image-overlay
+    ), url('/images/top-location-placeholder.png');
+    height: 260px;
+    margin: 10px;
+    padding: 0px;
+    //width: 300px;
+    .hero {
+        //background: rgba(94, 186, 208, 0.50);
+        //overflow: hidden;
+        //height: 100%;
+        text-align: center;
+        z-index: 2;
+        .hero-body {
+            height: 260px;
+            //width: 300px;
+            .container {
+                text-align: center;
+                .title, .subtitle {
+                    color: $white;
+                }
+            } // .container
+        } // .hero-body
+    } // .hero
+}
+
+.home-vacation-type {
+    background-color: $light-blue;
+    color: $dark-blue;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px;
+    padding: 1em;
+};
+
+.container {
+    h2.title {
+        color: $dark-blue;
+        text-align: center;
+    }
+}
+
+.db-newsletter {
+    background: linear-gradient(
+      $image-overlay,
+      $image-overlay
+    ), url('/images/db-home-newsletter.jpg');
+    background-position: 0 0;
+    color: $white;
+    min-height: 100%;
+    padding: 1em;
+    .columns .column {
+        .title, .field .label {
+            color: $white;
+        } // .title, .field .label
+    } // .columns .column
+} // .db-newsletter
+
+label.checkbox {
+    color: $white;
+    a, a:hover {
+        color: $white;
+    }
+}
+
+.db-social {
+    background: linear-gradient(
+      $orange-image-overlay,
+      $orange-image-overlay
+    ), url('/images/db-home-social.jpg');
+    background-position: 0 0;
+    color: $white;
+    min-height: 100%;
+    padding: 1em;
+    .title, .button {
+        color: $white;
+    } // .title, .field .label
+} // .db-newsletter
+
+.db-custom-travel {
+    background: linear-gradient(
+      $dark-image-overlay,
+      $dark-image-overlay
+    ), url('/images/db-home-slogan-large.jpg');
+    background-position: 0 0;
+    color: $white;
+    margin: -120px;
+    min-height: 100%;
+    padding: 10em;
+    .container {
+        .title, p {
+            color: $white;
+            a, a:hover {
+                color: $white;
+            }
+        }
+        p {
+            font-size: 1.5em;
+        }
+    }
+
+} // .db-custom-travel
+
+.db-question-level {
+    background-color: $light-blue;
+    padding: 1.5em;
+} // .db-question-level
+
+.level-item .title {
+    color: $dark-blue;
+} // .level-item .title
+
+.subtitle a {
+    color: $white;
+    font-weight: bold;
+}
