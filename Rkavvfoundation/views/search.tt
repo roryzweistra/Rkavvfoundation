@@ -1,0 +1,153 @@
+
+<div class="container">
+
+    <div class="columns">
+
+        <div class="column is-one-quarter">
+            <div class="box">
+                <img src="[% data.resultset.0.criteria.7.value %]" />
+                <b>[% data.resultset.0.criteria.8.name %] [% data.resultset.0.criteria.15.name %]</b><br />
+                Vertrek: [% data.resultset.0.criteria.10.name %]<br />
+                Vanaf [% data.resultset.0.criteria.12.name %] p.p.<br />
+                <a class="button db-button" href="/search/holiday?osi_code=[% data.resultset.0.criteria.16.value %]">Direct boeken</a>
+            </div>
+
+            <div class="box">
+                <img src="[% data.resultset.1.criteria.7.value %]" />
+                <b>[% data.resultset.1.criteria.8.name %] [% data.resultset.1.criteria.15.name %]</b><br />
+                Vertrek: [% data.resultset.1.criteria.10.name %]<br />
+                Vanaf [% data.resultset.1.criteria.12.name %] p.p.<br />
+                <a class="button db-button" href="/search/holiday?osi_code=[% data.resultset.1.criteria.16.value %]">Direct boeken</a>
+            </div>
+
+        </div>
+
+        <div class="column is-two-quarters">
+            <h1 class="title">[% data.page.title %]</h1>
+            [% data.page.description %]
+        </div>
+
+        <div class="column is-one-quarter">
+            <div class="box">
+                <img src="[% data.resultset.2.criteria.7.value %]" />
+                <b>[% data.resultset.2.criteria.8.name %] [% data.resultset.2.criteria.15.name %]</b><br />
+                Vertrek: [% data.resultset.2.criteria.10.name %]<br />
+                Vanaf [% data.resultset.2.criteria.12.name %] p.p.<br />
+                <a class="button db-button" href="/search/holiday?osi_code=[% data.resultset.2.criteria.16.value %]">Direct boeken</a>
+            </div>
+
+            <div class="box">
+                <img src="[% data.resultset.3.criteria.7.value %]" />
+                <b>[% data.resultset.3.criteria.8.name %] [% data.resultset.3.criteria.15.name %]</b><br />
+                Vertrek: [% data.resultset.3.criteria.10.name %]<br />
+                Vanaf [% data.resultset.3.criteria.12.name %] p.p.<br />
+                <a class="button db-button" href="/search/holiday?osi_code=[% data.resultset.3.criteria.16.value %]">Direct boeken</a>
+            </div>
+        </div>
+
+    </div>
+
+    <form action="" type="POST" class="db-calender-form">
+        <div class="field is-horizontal">
+            <div class="field-body">
+                <div class="field">
+                    <div class="field-label is-normal">
+                        <label class="label dark">Vertrekdatum</label>
+                    </div>
+                    <div class="control is-expanded ">
+                        <input class="input is-success" type="date" placeholder="Vertrekdatum" value="[% session.search_data.start_date.default %]">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field-label is-normal">
+                        <label class="label dark">Reisduur</label>
+                    </div>
+                    <div class="control is-expanded">
+                        <div class="select">
+                            <select class="select">
+                                <option [% IF session.search_data.day_range == '2-5' %]selected="selected"[% END %] value="2-5">2 t/m 5 dagen</option>
+                                <option [% IF session.search_data.day_range == '6-10' %]selected="selected"[% END %] value="6-10">6 t/m 10 dagen</option>
+                                <option [% IF session.search_data.day_range == '11-16' %]selected="selected"[% END %] value="11-16">11 t/m 16 dagen</option>
+                                <option [% IF session.search_data.day_range == '17-24' %]selected="selected"[% END %] value="17-24">17 t/m 24 dagen</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field-label is-normal">
+                        <label class="label dark">Verzorging</label>
+                    </div>
+                    <div class="control is-expanded">
+                        <div class="select">
+                            <select class="select js-db-calender-form-board">
+                                <option value="lg">Logies</option>
+                                <option value="lo">Logies &amp; Ontbijt</option>
+                                <option value="hp">Halfpension</option>
+                                <option value="vp">Volpension</option>
+                                <option value="ai">All-Inclusive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                [% IF session.search_data.transport_type == 'own_transport' %]
+
+                    <div class="field">
+                        <div class="field-label is-normal">
+                            <label class="label dark">Vervoer</label>
+                        </div>
+                        <div class="control is-expanded">
+                            <div class="select">
+                                <select class="select js-db-calender-form-airport" disabled="disabled">
+                                    <option selected="selected" value="car">Eigen vervoer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                [% ELSE %]
+
+                    <div class="field">
+                        <div class="field-label is-normal">
+                            <label class="label dark">Luchthaven</label>
+                        </div>
+                        <div class="control is-expanded">
+                            <div class="select">
+                                <select class="select js-db-calender-form-airport">
+                                    <option value="ams">Amsterdam</option>
+                                    <option value="rtm">Rotterdam</option>
+                                    <option value="grq">Groningen</option>
+                                    <option value="dus">Dusseldorf</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                [% END %]
+
+            </div>
+        </div>
+    </form>
+
+    <section class="section">
+        [% FOREACH result IN data.resultset %]
+            <div class="box">
+                <div class="columns">
+                    <div class="column">
+                    <b>[% result.criteria.8.name %] [% result.criteria.15.name %]</b><br />
+                    Vertrek: [% result.criteria.10.name %]<br />
+                    Vanaf [% result.criteria.12.name %] p.p.<br />
+                    </div>
+                    <div class="column">
+                        <img style="width: 300px" width="300px" src="[% result.criteria.7.value %]" />
+                    </div>
+                    <div class="column">
+                        [% result.criteria.24.value %]<br />
+                        <a class="button db-button" href="/search/holiday?osi_code=[% result.criteria.15.value %]">Direct boeken</a>
+                    </div>
+                </div>
+            </div>
+
+        [% END %]
+    </section>
+
+</div>

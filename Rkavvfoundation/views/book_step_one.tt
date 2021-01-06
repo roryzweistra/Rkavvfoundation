@@ -1,0 +1,130 @@
+
+<div class="holiday-picture">
+    <div class="container">
+        <nav class="breadcrumb is-large" aria-label="breadcrumbs">
+            <ul>
+                <li class="is-active">Stap 1: Reizigers</li>
+                <li>Stap 2: Contact informatie</li>
+                <li>Stap 3: Extra's</li>
+                <li>Stap 4: Overzicht en afronden</li>
+            </ul>
+        </nav>
+
+        <div class="columns">
+            <div class="column">
+
+                [% FOREACH pax IN session.search_data.pax_data %]
+                    <div class="box db-pax-placeholder">
+                        <div class="field">
+                            <label class="label">Voornaam</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" value="[% pax.firstName %]" />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Achternaam</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" value="[% pax.lastName %]" />
+                            </div>
+                        </div>
+                    </div>
+                [% END %]
+
+                <div class="box db-main-booker-placeholder">
+                    Hoofdboeker
+                    <div class="field">
+                        <label class="label">Voornaam</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.firstName %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Achternaam</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.lastName %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Adres</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.address %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Postcode</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.zipCode %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Plaats</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.place %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Telefoon</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.phone %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">E-mail</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.main_booker.email %]" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box db-main-booker-placeholder">
+                    Thuisblijvers informatie
+                    <div class="field">
+                        <label class="label">Naam</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.home_contact.name %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Telefoon</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.home_contact.phone %]" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">E-mail</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" value="[% session.search_data.home_contact.email %]" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="column">
+
+                <b>Totaal prijs</b>
+                <h2 class="title">&euro; [% data.totalPrice.amount %]</h2>
+
+                <p>
+                [% FOREACH message IN data.messages %]
+                    [% message.consumerDescription %]<br />
+                [% END %]
+                </p>
+            </div>
+
+        </div>
+
+        <a href="/book/step-2" class="button db-button">Versturen - Naar stap 2</a>
+
+    </div>
+</div>

@@ -1,0 +1,7 @@
+
+<div class="plane-tickets">
+    <div class="container">
+        <h1 class="title">Vliegtickets</h1>
+        <span>Er kan geen contact gelegd worden met de kiwi API service (code: 10081)</span>
+    </div>
+</div>

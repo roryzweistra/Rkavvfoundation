@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="[% settings.charset %]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>[% title %]</title>
+    <link rel="stylesheet" href="[% request.uri_base %]/css/style.css">
+
+    <!-- Grab jQuery from a CDN, fall back to local if necessary -->
+    <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">/* <![CDATA[ */
+        !window.jQuery && document.write('<script type="text/javascript" src="[% request.uri_base %]/javascripts/jquery.js"><\/script>')
+    /* ]]> */</script>
+    <script src="https://kit.fontawesome.com/6f17725a76.js" crossorigin="anonymous"></script>
+    <script src="/javascripts/db.js"></script>
+    <script src="https://cdn.rawgit.com/mattmezza/bulmahead/master/dist/bulmahead.bundle.js"></script>
+</head>
+<body>
+    <nav class="navbar db-top-nav">
+        <div class="container">
+            <div class="navbar-start">
+                <div class="navbar-brand">
+                    <div class="navbar-item">
+                        info@directbookers.nl
+                    </div>
+                    <div class="navbar-item"> | </div>
+                    <div class="navbar-item">
+                        0162-685858
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">SGR</div>
+                <div class="navbar-item">ANVR</div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar db-main-nav">
+        <div class="container">
+            <div class="navbar-brand">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <span class="dark">RKAVV</span><span class="light">Foundation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <a class="navbar-item">Over ons</a>
+                <a class="navbar-item">Werken bij</a>
+                <a href="/vliegtickets" class="navbar-item">Vliegtickets</a>
+            </div>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="db-main-section">
+        [% content %]
+    </div>
+
+    <section class="section">
+        <div class="container db-question-level">
+            <h2 class="title has-text-centered">Vragen? Wij helpen u graag!</h2>
+
+            <div class="level">
+                <div class="level-item has-text-centered">
+                    <p class="title">
+                        <span class="icon">
+                            <i class="fas fa-phone-volume">&nbsp;</i>
+                        </span>
+                        &nbsp; 0162-685858
+                    </p>
+                </div>
+                <div class="level-item has-text-centered">
+                    <p class="title">
+                        <span class="icon">
+                            <i class="fas fa-envelope">&nbsp;</i>
+                        </span>
+                        &nbsp; info@directbookers.nl
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section db-footer-popular">
+        <div class="container">
+            <h2 class="title">Onze top vakanties</h2>
+            <div class="columns">
+                <div class="column">
+                    <div class="content">
+                        <h4 class="title">Vliegvakanties</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-plane">&nbsp;</i>Spanje</a></li>
+                            <li><a href="#"><i class="fas fa-plane">&nbsp;</i>Griekenland</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <h4 class="title">Autovakanties</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-car-side">&nbsp;</i>Spanje</a></li>
+                            <li><a href="#"><i class="fas fa-car-side">&nbsp;</i>Griekenland</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                    <h4 class="title">Busvakanties</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-bus">&nbsp;</i>Spanje</a></li>
+                            <li><a href="#"><i class="fas fa-bus">&nbsp;</i>Griekenland</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <h4 class="title">Stedentrips</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-city">&nbsp;</i>Spanje</a></li>
+                            <li><a href="#"><i class="fas fa-city">&nbsp;</i>Griekenland</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <div class="columns db-footer-nav-1">
+                <div class="column"></div>
+                <div class="column">
+                    <a>Pers &amp; Media</a>
+                </div>
+                <div class="column">
+                    <a>Vacatures</a>
+                </div>
+                <div class="column">
+                    <a>Over ons</a>
+                </div>
+                <div class="column">
+                    <a>Klantenservice</a>
+                </div>
+                <div class="column"></div>
+            </div>
+
+            <div class="columns db-footer-nav-2">
+                <div class="column"></div>
+                <div class="column">
+                    <a>Algemene Voorwaarden</a>
+                </div>
+                <div class="column">
+                    <a>Privacy Statement</a>
+                </div>
+
+                <div class="column">
+                    <a>Copyright</a>
+                </div>
+
+                <div class="column"></div>
+            </div>
+
+            <p class="db-footer-copyright">
+                &copy; 2019-2021 Rkavvfoundation.nl
+            </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
