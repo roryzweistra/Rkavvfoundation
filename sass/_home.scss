@@ -8,7 +8,7 @@
     text-align: center;
     .container .hero .hero-body .container {
         .title, .subtitle {
-            color: $dark-blue;
+            color: $dark-red;
             font-weight: bold;
         }
         .title {
@@ -27,7 +27,7 @@
 }
 
 .home-search-box {
-    background-color: $light-blue;
+    background-color: $light-red;
     margin-top: -90px;
     padding: 10px;
     .field-label {
@@ -37,7 +37,7 @@
 }
 
 .label.dark {
-    color: $dark-blue;
+    color: $dark-red;
     font-weight: bold;
 }
 
@@ -70,8 +70,8 @@
 }
 
 .home-vacation-type {
-    background-color: $light-blue;
-    color: $dark-blue;
+    background-color: $light-red;
+    color: $dark-red;
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px;
@@ -80,7 +80,7 @@
 
 .container {
     h2.title {
-        color: $dark-blue;
+        color: $dark-red;
         text-align: center;
     }
 }
@@ -110,8 +110,8 @@ label.checkbox {
 
 .db-social {
     background: linear-gradient(
-      $orange-image-overlay,
-      $orange-image-overlay
+      $red-image-overlay,
+      $red-image-overlay
     ), url('/images/db-home-social.jpg');
     background-position: 0 0;
     color: $white;
@@ -147,12 +147,12 @@ label.checkbox {
 } // .db-custom-travel
 
 .db-question-level {
-    background-color: $light-blue;
+    background-color: $light-red;
     padding: 1.5em;
 } // .db-question-level
 
 .level-item .title {
-    color: $dark-blue;
+    color: $dark-red;
 } // .level-item .title
 
 .subtitle a {
