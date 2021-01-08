@@ -6,7 +6,7 @@ $medium-red: #E32F28 !important;
 $dark-red: #E32F28 !important;
 $red: #E32F28 !important;
 $white: #FFF !important;
-$image-overlay: rgba(94, 186, 208, 0.5);
+$image-overlay: rgba(94, 186, 208, 0.7);
 $dark-image-overlay: rgba(16, 58, 79, 0.7);
 $red-image-overlay: rgba(238, 116, 2, 0.7);
 
@@ -15,6 +15,13 @@ button.is-selected {
     color: $white;
 }
 
+.donate-text {
+    color: $white;
+    padding-right: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+};
+
 .db-button, .db-button:hover {
     border: 0px solid;
     background-color: $red;
@@ -22,6 +29,10 @@ button.is-selected {
     font-weight: bold;
     padding: 20px;
 } // .db-button, .db-button:hove
+
+.db-search-holiday-button {
+    border: 1px solid $white;
+}
 
 .db-sub-heading {
     color: $light-red;
