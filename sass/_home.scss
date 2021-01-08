@@ -1,10 +1,7 @@
 @charset "utf-8";
 
 .home-slogan {
-    background: linear-gradient(
-      $image-overlay,
-      $image-overlay
-    ), url('/images/db-home-slogan.png');
+    background: url('/images/db-home-slogan.png');
     text-align: center;
     .container .hero .hero-body .container {
         .title, .subtitle {
@@ -12,8 +9,8 @@
             font-weight: bold;
         }
         .title {
-            font-size: 3.5em;
-            margin-bottom: 1.5em;
+            font-size: 5.5em;
+            margin-bottom: 0.5em;
         }
         .subtitle {
             font-size: 1.5em;
@@ -24,6 +21,13 @@
             padding: 30px;
         }
     }
+}
+
+.home-slogan-text-background {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    );
 }
 
 .home-search-box {
@@ -37,7 +41,7 @@
 }
 
 .label.dark {
-    color: $dark-red;
+    color: $white;
     font-weight: bold;
 }
 
@@ -71,7 +75,7 @@
 
 .home-vacation-type {
     background-color: $light-red;
-    color: $dark-red;
+    color: $white;
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px;
@@ -91,6 +95,8 @@
       $image-overlay
     ), url('/images/db-home-newsletter.jpg');
     background-position: 0 0;
+    border: 2px solid $red;
+    //box-shadow: 8px 8px 20px 0px $black;
     color: $white;
     min-height: 100%;
     padding: 1em;
@@ -110,10 +116,12 @@ label.checkbox {
 
 .db-social {
     background: linear-gradient(
-      $red-image-overlay,
-      $red-image-overlay
+      $image-overlay,
+      $image-overlay
     ), url('/images/db-home-social.jpg');
     background-position: 0 0;
+    border: 2px solid $red;
+    //box-shadow: 8px 8px 20px 0px $black;
     color: $white;
     min-height: 100%;
     padding: 1em;
@@ -124,8 +132,8 @@ label.checkbox {
 
 .db-custom-travel {
     background: linear-gradient(
-      $dark-image-overlay,
-      $dark-image-overlay
+      $image-overlay,
+      $image-overlay
     ), url('/images/db-home-slogan-large.jpg');
     background-position: 0 0;
     color: $white;
@@ -147,12 +155,16 @@ label.checkbox {
 } // .db-custom-travel
 
 .db-question-level {
-    background-color: $light-red;
+    background-color: $red;
     padding: 1.5em;
 } // .db-question-level
 
+.db-question-level > h2.title {
+    color: $white;
+}
+
 .level-item .title {
-    color: $dark-red;
+    color: $white;
 } // .level-item .title
 
 .subtitle a {
