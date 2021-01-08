@@ -3,11 +3,12 @@
     <div class="container">
         <div class="hero">
             <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">Vind vliegensvlug de vakantie die het beste bij u past</h1>
-                    <h3 class="subtitle">Of bespreek uw ideale vakantie met onze</h3>
-                    <a class="button db-button" href="">Reisspecialisten</a>
+                <div class="container home-slogan-text-background">
+                    <img style="float: left; width: 100px;" src="/images/logo.jpg" />
+                    <h1 class="title">Sport en verbinding</h1>
+                    <div style="clear: both;"></div>
                 </div>
+                <br /><br /><br />
             </div>
         </div>
     </div>
@@ -18,73 +19,22 @@
             <form action="/search/" method="POST">
                 <div class="field is-horizontal">
                     <div class="field-body">
+                        <span class="donate-text">
+                            Help ons met uw donatie
+                        </span>
                         <div class="field">
-                            <div class="field-label is-normal dark">
-                                <label class="label">&nbsp;</label>
-                            </div>
-                            <div class="buttons has-addons">
-                                <button class="button is-selected">
-                                    <span class="icon">
-                                        <i class="fas fa-plane"></i>
-                                    </span>
-                                </button>
-                                <button class="button">
-                                    <span class="icon">
-                                        <i class="fas fa-car-side"></i>
-                                    </span>
-                                </button>
-                                <button class="button">
-                                    <span class="icon">
-                                        <i class="fas fa-bus"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="field-label is-normal">
-                                <label class="label dark">Bestemming</label>
-                            </div>
                             <div class="control">
-                                <input name="destination" class="input db-search-holiday-destination" type="text" placeholder="Bestemming">
+                                <input name="destination" class="input db-search-holiday-destination" type="text" placeholder="Bedrag">
                             </div>
                         </div>
                         <div class="field">
-                            <div class="field-label is-normal">
-                                <label class="label dark">Aantal personen</label>
-                            </div>
                             <div class="control is-expanded ">
-                                <input class="input is-success" type="number" min="1" max="9" placeholder="Aantal personen" value="[% IF session.search_data.pax_amount %][% session.search_data.pax_amount %][% END %]">
+                                <input class="input is-success" type="text" placeholder="Maandelijks" value="">
                             </div>
                         </div>
                         <div class="field">
-                            <div class="field-label is-normal">
-                                <label class="label dark">Vertrekdatum</label>
-                            </div>
-                            <div class="control is-expanded ">
-                                <input class="input is-success" type="date" placeholder="Vertrekdatum" value="[% session.search_data.start_date.default %]" />
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="field-label is-normal">
-                                <label class="label dark">Reisduur</label>
-                            </div>
-                            <div class="control is-expanded">
-                                <div class="select">
-                                    <select class="select">
-                                        <option [% IF session.search_data.day_range == '2-5' %]selected="selected"[% END %] value="2-5">2 t/m 5 dagen</option>
-                                        <option [% IF session.search_data.day_range == '6-10' %]selected="selected"[% END %] value="6-10">6 t/m 10 dagen</option>
-                                        <option [% IF session.search_data.day_range == '11-16' %]selected="selected"[% END %] value="11-16">11 t/m 16 dagen</option>
-                                        <option [% IF session.search_data.day_range == '17-24' %]selected="selected"[% END %] value="17-24">17 t/m 24 dagen</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="field-label is-normal">
-                                <label class="label">&nbsp;</label>
-                            </div>
                             <div class="control">
-                                <button class="button db-button db-search-holiday-button" type="submit">Zoeken</button>
+                                <button class="button db-button db-search-holiday-button" type="submit">Doneren</button>
                             </div>
                         </div>
                     </div>
@@ -99,14 +49,13 @@
 <section class="section">
     <div class="home-top-locations">
         <div class="container">
-            <h2 class="title">Of laat je inspireren door onze toplocaties</h2>
+            <h2 class="title">Hier worden wij blij van</h2>
             <div class="columns">
                 <div class="column top-location-image">
                     <div class="hero">
                         <div class="hero-body">
                             <div class="container">
-                                <h2 class="title">Spanje</h2>
-                                <h3 class="subtitle"><a href="/search/?place_id=432&transport_type=own_transport">Benidorm</a></h3>
+                                <h2 class="title">Unlimited Festival</h2>
                             </div>
                         </div>
                     </div>
@@ -115,8 +64,7 @@
                     <div class="hero ">
                         <div class="hero-body">
                             <div class="container">
-                                <h2 class="title">Bonaire</h2>
-                                <h3 class="subtitle"><a href="/search/?place_id=239&transport_type=flight">Eagle Beach</a></h3>
+                                <h2 class="title">Meals on Wheels</h2>
                             </div>
                         </div>
                     </div>
@@ -125,8 +73,7 @@
                     <div class="hero">
                         <div class="hero-body">
                             <div class="container">
-                                <h2 class="title">Curacao</h2>
-                                <h3 class="subtitle"><a href="/search/?place_id=239&transport_type=flight">Eagle Beach</a></h3>
+                                <h2 class="title">Sponsorloterij</h2>
                             </div>
                         </div>
                     </div>
@@ -139,38 +86,31 @@
 <section class="section">
     <div class="home-holiday-types">
         <div class="container">
-            <h2 class="title">Kies uit verschillende soorten vakanties</h2>
+            <h2 class="title">Dit is wat we doen</h2>
             <div class="columns">
-                <div class="column home-vacation-type">
-                    All Inclusive
+                <div class="column">
+                    <div class="home-vacation-type">
+                        Unlimited festival
+                    </div>
+                    <div class="home-vacation-type">
+                        Diners
+                    </div>
                 </div>
-                <div class="column home-vacation-type">
-                    Stedentrips
+                <div class="column">
+                    <div class="home-vacation-type">
+                        Meals on wheels
+                    </div>
+                    <div class="home-vacation-type">
+                        Walkabouts
+                    </div>
                 </div>
-                <div class="column home-vacation-type">
-                    Verre Reizen
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column home-vacation-type">
-                    Rondreizen
-                </div>
-                <div class="column home-vacation-type">
-                    Strandvakanties
-                </div>
-                <div class="column home-vacation-type">
-                    Kindervakanties
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column home-vacation-type">
-                    Autovakanties
-                </div>
-                <div class="column home-vacation-type">
-                    Busvakanties
-                </div>
-                <div class="column home-vacation-type">
-                    Actieve Vakanties
+                <div class="column">
+                    <div class="home-vacation-type">
+                        Klaverjassen
+                    </div>
+                    <div class="home-vacation-type">
+                        Bingo
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,7 +124,7 @@
                 <div class="content db-newsletter">
                     <div class="columns">
                         <div class="column is-two-thirds">
-                            <h3 class="title">Altijd als eerste op de hoogte zijn van nieuws en aanbiedingen!</h3>
+                            <h3 class="title">Altijd als eerste op de hoogte zijn van ons laatste nieuws!</h3>
                             <form class="form" action="">
 
                                 <div class="field">
@@ -227,7 +167,7 @@
             </div>
             <div class="column">
                 <div class="content db-social">
-                    <h3 class="title">Blijf op de hoogte van ons laatste nieuws en aanbiedingen</h3>
+                    <h3 class="title">Blijf op de hoogte van ons laatste nieuws en activiteiten</h3>
                     <h3 class="title">Volg ons op social media</h3>
                     <br /><br />
                     <a class="button db-button-social" href="">Facebook</a>
@@ -242,8 +182,8 @@
 
 <section class="section db-custom-travel">
     <div class="container has-text-centered">
-        <h2 class="title">Maatwerk of grote groep?</h2>
-        <p>Neem contact op met onze reisspecialisten en wij helpen u de perfecte reis voor uw gezelschap te vinden.<br />
-        Stuur een mail naar <a href="mailto:info@directbookers.nl">info@directbookers.nl</a> of bel naar <a href="tel:+31162685858">0162-685858</a></p>
+        <h2 class="title">Help ons!</h2>
+        <p>Wij zijn altijd op zoek naar sponsors en vrijwilligers die ons helpen onze doelen te bereiken.
+        Weten hoe u het best kan helpen? Neem contact met ons op.</p>
     </div>
 </section>
