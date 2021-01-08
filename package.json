@@ -1,0 +1,19 @@
+{
+  "name": "rkavvfoundation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sass/style.scss",
+  "scripts": {
+    "css-build": "node-sass sass/style.scss Rkavvfoundation/public/css/style.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.8.0",
+    "flag-icon-css": "^3.5.0",
+    "node-sass": "^4.14.1",
+    "npm": "^6.14.10"
+  }
+}
