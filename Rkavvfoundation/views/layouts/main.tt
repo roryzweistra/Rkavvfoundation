@@ -21,17 +21,15 @@
             <div class="navbar-start">
                 <div class="navbar-brand">
                     <div class="navbar-item">
-                        info@directbookers.nl
+                        info@rkavvfoundation.nl
                     </div>
                     <div class="navbar-item"> | </div>
                     <div class="navbar-item">
-                        0162-685858
+                        012-3456789
                     </div>
                 </div>
             </div>
             <div class="navbar-end">
-                <div class="navbar-item">SGR</div>
-                <div class="navbar-item">ANVR</div>
             </div>
         </div>
     </nav>
@@ -45,9 +43,9 @@
                 </div>
             </div>
             <div class="navbar-end">
-                <a class="navbar-item">Over ons</a>
-                <a class="navbar-item">Werken bij</a>
-                <a href="/vliegtickets" class="navbar-item">Vliegtickets</a>
+                <a class="navbar-item">Activiteiten</a>
+                <a class="navbar-item">Sponsors</a>
+                <a class="navbar-item">Contact</a>
             </div>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
@@ -63,7 +61,7 @@
 
     <section class="section">
         <div class="container db-question-level">
-            <h2 class="title has-text-centered">Vragen? Wij helpen u graag!</h2>
+            <h2 class="title has-text-centered">Vragen? Neem contact met ons!</h2>
 
             <div class="level">
                 <div class="level-item has-text-centered">
@@ -71,7 +69,7 @@
                         <span class="icon">
                             <i class="fas fa-phone-volume">&nbsp;</i>
                         </span>
-                        &nbsp; 0162-685858
+                        &nbsp; 012-3456789
                     </p>
                 </div>
                 <div class="level-item has-text-centered">
@@ -79,7 +77,7 @@
                         <span class="icon">
                             <i class="fas fa-envelope">&nbsp;</i>
                         </span>
-                        &nbsp; info@directbookers.nl
+                        &nbsp; info@rkavvfoundation.nl
                     </p>
                 </div>
             </div>
@@ -88,43 +86,19 @@
 
     <section class="section db-footer-popular">
         <div class="container">
-            <h2 class="title">Onze top vakanties</h2>
+            <h2 class="title">Onze fantastische sponsors</h2>
             <div class="columns">
                 <div class="column">
-                    <div class="content">
-                        <h4 class="title">Vliegvakanties</h4>
-                        <ul>
-                            <li><a href="#"><i class="fas fa-plane">&nbsp;</i>Spanje</a></li>
-                            <li><a href="#"><i class="fas fa-plane">&nbsp;</i>Griekenland</a></li>
-                        </ul>
-                    </div>
+                    <img src="/images/fugro.png" /> Fugro
                 </div>
                 <div class="column">
-                    <div class="content">
-                        <h4 class="title">Autovakanties</h4>
-                        <ul>
-                            <li><a href="#"><i class="fas fa-car-side">&nbsp;</i>Spanje</a></li>
-                            <li><a href="#"><i class="fas fa-car-side">&nbsp;</i>Griekenland</a></li>
-                        </ul>
-                    </div>
+                    <img src="/images/fugro.png" /> Sport2000
                 </div>
                 <div class="column">
-                    <div class="content">
-                    <h4 class="title">Busvakanties</h4>
-                        <ul>
-                            <li><a href="#"><i class="fas fa-bus">&nbsp;</i>Spanje</a></li>
-                            <li><a href="#"><i class="fas fa-bus">&nbsp;</i>Griekenland</a></li>
-                        </ul>
-                    </div>
+                    <img src="/images/fugro.png" /> Beltona
                 </div>
                 <div class="column">
-                    <div class="content">
-                        <h4 class="title">Stedentrips</h4>
-                        <ul>
-                            <li><a href="#"><i class="fas fa-city">&nbsp;</i>Spanje</a></li>
-                            <li><a href="#"><i class="fas fa-city">&nbsp;</i>Griekenland</a></li>
-                        </ul>
-                    </div>
+                    <img src="/images/fugro.png" /> Vriendenloterij
                 </div>
             </div>
         </div>
@@ -142,9 +116,6 @@
                 </div>
                 <div class="column">
                     <a>Over ons</a>
-                </div>
-                <div class="column">
-                    <a>Klantenservice</a>
                 </div>
                 <div class="column"></div>
             </div>
@@ -166,7 +137,7 @@
             </div>
 
             <p class="db-footer-copyright">
-                &copy; 2019-2021 Rkavvfoundation.nl
+                &copy; 2021 Rkavvfoundation.nl
             </p>
             </div>
         </div>
