@@ -7105,12 +7105,21 @@ button.is-selected {
   background-color: #E32F28 !important;
   color: #FFF !important; }
 
+.donate-text {
+  color: #FFF !important;
+  padding-right: 20px;
+  font-size: 1.5em;
+  font-weight: bold; }
+
 .db-button, .db-button:hover {
   border: 0px solid;
   background-color: #E32F28 !important;
   color: #FFF !important;
   font-weight: bold;
   padding: 20px; }
+
+.db-search-holiday-button {
+  border: 1px solid #FFF !important; }
 
 .db-sub-heading {
   color: #E32F28 !important;
@@ -7192,20 +7201,23 @@ button.is-selected {
   padding: 20px; }
 
 .home-slogan {
-  background: linear-gradient(rgba(94, 186, 208, 0.5), rgba(94, 186, 208, 0.5)), url("/images/db-home-slogan.png");
+  background: url("/images/db-home-slogan.png");
   text-align: center; }
   .home-slogan .container .hero .hero-body .container .title, .home-slogan .container .hero .hero-body .container .subtitle {
     color: #E32F28 !important;
     font-weight: bold; }
   .home-slogan .container .hero .hero-body .container .title {
-    font-size: 3.5em;
-    margin-bottom: 1.5em; }
+    font-size: 5.5em;
+    margin-bottom: 0.5em; }
   .home-slogan .container .hero .hero-body .container .subtitle {
     font-size: 1.5em; }
   .home-slogan .container .hero .hero-body .container .db-button {
     font-size: 1.5em;
     margin-bottom: 1em;
     padding: 30px; }
+
+.home-slogan-text-background {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)); }
 
 .home-search-box {
   background-color: #E32F28 !important;
@@ -7216,11 +7228,11 @@ button.is-selected {
     padding-bottom: 5px; }
 
 .label.dark {
-  color: #E32F28 !important;
+  color: #FFF !important;
   font-weight: bold; }
 
 .top-location-image {
-  background: linear-gradient(rgba(94, 186, 208, 0.5), rgba(94, 186, 208, 0.5)), url("/images/top-location-placeholder.png");
+  background: linear-gradient(rgba(94, 186, 208, 0.7), rgba(94, 186, 208, 0.7)), url("/images/top-location-placeholder.png");
   height: 260px;
   margin: 10px;
   padding: 0px; }
@@ -7236,7 +7248,7 @@ button.is-selected {
 
 .home-vacation-type {
   background-color: #E32F28 !important;
-  color: #E32F28 !important;
+  color: #FFF !important;
   font-size: 1.2em;
   font-weight: bold;
   margin: 10px;
@@ -7247,8 +7259,9 @@ button.is-selected {
   text-align: center; }
 
 .db-newsletter {
-  background: linear-gradient(rgba(94, 186, 208, 0.5), rgba(94, 186, 208, 0.5)), url("/images/db-home-newsletter.jpg");
+  background: linear-gradient(rgba(94, 186, 208, 0.7), rgba(94, 186, 208, 0.7)), url("/images/db-home-newsletter.jpg");
   background-position: 0 0;
+  border: 2px solid #E32F28 !important;
   color: #FFF !important;
   min-height: 100%;
   padding: 1em; }
@@ -7261,8 +7274,9 @@ label.checkbox {
     color: #FFF !important; }
 
 .db-social {
-  background: linear-gradient(rgba(238, 116, 2, 0.7), rgba(238, 116, 2, 0.7)), url("/images/db-home-social.jpg");
+  background: linear-gradient(rgba(94, 186, 208, 0.7), rgba(94, 186, 208, 0.7)), url("/images/db-home-social.jpg");
   background-position: 0 0;
+  border: 2px solid #E32F28 !important;
   color: #FFF !important;
   min-height: 100%;
   padding: 1em; }
@@ -7270,7 +7284,7 @@ label.checkbox {
     color: #FFF !important; }
 
 .db-custom-travel {
-  background: linear-gradient(rgba(16, 58, 79, 0.7), rgba(16, 58, 79, 0.7)), url("/images/db-home-slogan-large.jpg");
+  background: linear-gradient(rgba(94, 186, 208, 0.7), rgba(94, 186, 208, 0.7)), url("/images/db-home-slogan-large.jpg");
   background-position: 0 0;
   color: #FFF !important;
   margin: -120px;
@@ -7287,8 +7301,11 @@ label.checkbox {
   background-color: #E32F28 !important;
   padding: 1.5em; }
 
+.db-question-level > h2.title {
+  color: #FFF !important; }
+
 .level-item .title {
-  color: #E32F28 !important; }
+  color: #FFF !important; }
 
 .subtitle a {
   color: #FFF !important;
