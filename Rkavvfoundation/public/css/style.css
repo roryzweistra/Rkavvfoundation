@@ -7140,27 +7140,27 @@ button.is-selected {
     font-size: 0.8em;
     font-weight: bold; }
 
-.db-main-nav .container .navbar-brand .navbar-start {
+.db-main-nav .navbar-brand {
   font-size: 2.4em; }
-  .db-main-nav .container .navbar-brand .navbar-start .navbar-item .dark {
+  .db-main-nav .navbar-brand .navbar-item .dark {
     color: #E32F28 !important;
     font-weight: bold; }
-  .db-main-nav .container .navbar-brand .navbar-start .navbar-item .light {
+  .db-main-nav .navbar-brand .navbar-item .light {
     color: #E32F28 !important;
     font-weight: 300; }
-  .db-main-nav .container .navbar-brand .navbar-start .navbar-item, .db-main-nav .container .navbar-brand .navbar-start .navbar-link {
+  .db-main-nav .navbar-brand .navbar-item, .db-main-nav .navbar-brand .navbar-link {
     color: #E32F28 !important;
     font-weight: bold; }
 
-.db-main-nav .container .navbar-end {
+.db-main-nav .navbar-end {
   font-size: 1.2em; }
-  .db-main-nav .container .navbar-end .navbar-item .dark {
+  .db-main-nav .navbar-end .navbar-item .dark {
     color: #E32F28 !important;
     font-weight: bold; }
-  .db-main-nav .container .navbar-end .navbar-item .light {
+  .db-main-nav .navbar-end .navbar-item .light {
     color: #E32F28 !important;
     font-weight: 300; }
-  .db-main-nav .container .navbar-end .navbar-item, .db-main-nav .container .navbar-end .navbar-link {
+  .db-main-nav .navbar-end .navbar-item, .db-main-nav .navbar-end .navbar-link {
     color: #E32F28 !important;
     font-weight: bold; }
 
