@@ -62,44 +62,40 @@ button.is-selected {
 } // .db-top-nav
 
 .db-main-nav {
-    .container {
-        .navbar-brand {
-            .navbar-start {
-                font-size: 2.4em;
-                .navbar-item {
-                    .dark {
-                        color: $medium-red;
-                        font-weight: bold;
-                    } // .dark
-                    .light {
-                        color: $medium-red;
-                        font-weight: 300;
-                    } // .light
-                } // .navbar-item
-                .navbar-item, .navbar-link {
-                    color: $medium-red;
-                    font-weight: bold;
-                } // .navbar-item, .navbar-link
-            } // .navbar-start
-        } // .navbar-brand
-        .navbar-end {
-            font-size: 1.2em;
-            .navbar-item {
-                .dark {
-                    color: $medium-red;
-                    font-weight: bold;
-                } // .dark
-                .light {
-                    color: $medium-red;
-                    font-weight: 300;
-                } // .light
-            } // .navbar-item
-            .navbar-item, .navbar-link {
+    .navbar-brand {
+        font-size: 2.4em;
+        .navbar-item {
+            .dark {
                 color: $medium-red;
                 font-weight: bold;
-            } // .navbar-item, .navbar-link
-        } // .navbar-end
-    } // .container
+            } // .dark
+            .light {
+                color: $medium-red;
+                font-weight: 300;
+            } // .light
+        } // .navbar-item
+        .navbar-item, .navbar-link {
+            color: $medium-red;
+            font-weight: bold;
+        } // .navbar-item, .navbar-linkt
+    } // .navbar-brand
+    .navbar-end {
+        font-size: 1.2em;
+        .navbar-item {
+            .dark {
+                color: $medium-red;
+                font-weight: bold;
+            } // .dark
+            .light {
+                color: $medium-red;
+                font-weight: 300;
+            } // .light
+        } // .navbar-item
+        .navbar-item, .navbar-link {
+            color: $medium-red;
+            font-weight: bold;
+        } // .navbar-item, .navbar-link
+    } // .navbar-end
 } // .db-main-nav
 
 .db-main-section {
