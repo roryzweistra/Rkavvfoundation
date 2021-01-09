@@ -7140,6 +7140,9 @@ button.is-selected {
     font-size: 0.8em;
     font-weight: bold; }
 
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #0a0a0a; }
+
 .db-main-nav .navbar-brand {
   font-size: 2.4em; }
   .db-main-nav .navbar-brand .navbar-item .dark {
