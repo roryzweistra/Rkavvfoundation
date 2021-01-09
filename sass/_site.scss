@@ -61,6 +61,10 @@ button.is-selected {
     } // .container
 } // .db-top-nav
 
+.navbar-link:not(.is-arrowless)::after {
+    border-color: $black;
+}
+
 .db-main-nav {
     .navbar-brand {
         font-size: 2.4em;
