@@ -18,6 +18,14 @@ get '/' => sub {
     return template 'index.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/contact' => sub {
+    return template 'contact.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/voordelig-schenken' => sub {
+    return template 'voordelig-schenken.tt', {}, { 'layout' => 'main.tt' };
+};
+
 #------------------------------------------------------------------------------------------------------------------
 
 1;
