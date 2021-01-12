@@ -1,0 +1,32 @@
+
+
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Contact</h1>
+
+            <h2 class="subtitle">Bestuur</h2>
+            <p>
+            Jelle Abma - voorzitter<br />
+            voorzitter@rkavvfoundation.nl<br />
+            Sandra Gijsbertsen – penningmeester<br />
+            penningmeester@rkavvfoundation.nl<br />
+            Patrícia Barátová - secretaris<br />
+            secretaris@rkavvfoundation.nl<br />
+            </p>
+
+            <h2 class="subtitle">Bezoekadres</h2>
+            <p>
+            Sportpark Kastelenring<br />
+            Sportparkweg 4<br />
+            2263SX Leidschendam<br />
+            </p>
+
+            <h2 class="subtitle">Postadres</h2>
+            <p>
+            RKAVV Foundation<br />
+            Postbus 57<br />
+            2260AB Leidschendam<br />
+            </p>
+
+        </div>
+    </div>
