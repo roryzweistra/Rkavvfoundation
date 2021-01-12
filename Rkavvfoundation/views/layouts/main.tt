@@ -34,7 +34,7 @@
         </div>
     </nav>
     <div class="container">
-    <nav class="navbar db-main-nav">
+        <nav class="navbar db-main-nav">
 
             <div class="navbar-brand">
                 <div class="navbar-item">
@@ -111,8 +111,7 @@
                 </div>
             </div>
 
-
-    </nav>
+        </nav>
     </div>
 
     <div class="db-main-section">
