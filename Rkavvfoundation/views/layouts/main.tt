@@ -23,10 +23,6 @@
                     <div class="navbar-item">
                         info@rkavvfoundation.nl
                     </div>
-                    <div class="navbar-item"> | </div>
-                    <div class="navbar-item">
-                        012-3456789
-                    </div>
                 </div>
             </div>
             <div class="navbar-end">
@@ -123,14 +119,6 @@
             <h2 class="title has-text-centered">Vragen? Neem contact met ons op!</h2>
 
             <div class="level">
-                <div class="level-item has-text-centered">
-                    <p class="title">
-                        <span class="icon">
-                            <i class="fas fa-phone-volume">&nbsp;</i>
-                        </span>
-                        &nbsp; 012-3456789
-                    </p>
-                </div>
                 <div class="level-item has-text-centered">
                     <p class="title">
                         <span class="icon">
