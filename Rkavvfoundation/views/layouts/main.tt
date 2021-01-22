@@ -55,16 +55,16 @@
                             Organisatie
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item">
+                            <a href="/bestuur" class="navbar-item">
                                 Bestuur
                             </a>
-                            <a class="navbar-item">
+                            <a  href="/anbi" class="navbar-item">
                                 ANBI
                             </a>
                             <a class="navbar-item">
                                 AVG
                             </a>
-                            <a class="navbar-item">
+                            <a href="/resultaten" class="navbar-item">
                                 Resultaten
                             </a>
                         </div>
@@ -78,8 +78,11 @@
                             <a class="navbar-item">
                                 Particulieren
                             </a>
-                            <a class="navbar-item">
+                            <a href="/bedrijven" class="navbar-item">
                                 Bedrijven
+                            </a>
+                            <a href="/belastingvoordeel" class="navbar-item">
+                                Belastingvoordeel
                             </a>
                             <a href="/voordelig-schenken" class="navbar-item">
                                 Voordelig schenken
