@@ -18,12 +18,36 @@ get '/' => sub {
     return template 'index.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/anbi' => sub {
+    return template 'anbi.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/belastingvoordeel' => sub {
+    return template 'belatingvoordeel.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/bestuur' => sub {
+    return template 'bestuur.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/contact' => sub {
     return template 'contact.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/projecten' => sub {
+    return template 'projecten.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/resultaten' => sub {
+    return template 'resultaten.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/sponsorship' => sub {
+    return template 'sponsorship.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/voordelig-schenken' => sub {
-    return template 'voordelig-schenken.tt', {}, { 'layout' => 'main.tt' };
+    return template 'voordelig_schenken.tt', {}, { 'layout' => 'main.tt' };
 };
 
 #------------------------------------------------------------------------------------------------------------------
