@@ -67,7 +67,7 @@
                             <a  href="/anbi" class="navbar-item">
                                 ANBI
                             </a>
-                            <a class="navbar-item">
+                            <a href="/avg" class="navbar-item">
                                 AVG
                             </a>
                             <a href="/resultaten" class="navbar-item">
