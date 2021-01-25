@@ -50,8 +50,8 @@
                 </div>
                 <div class="navbar-end">
 
-                    <div class="navbar-item is-hoverable">
-                        <a href="http://wwww.rkavvfoundation.nl" class="navbar-link">
+                    <div class="navbar-item">
+                        <a href="http://www.rkavvfoundation.nl" class="navbar-link">
                             Home
                         </a>
                     </div>
