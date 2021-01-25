@@ -22,8 +22,12 @@ get '/anbi' => sub {
     return template 'anbi.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/bedrijven' => sub {
+    return template 'sponsorship.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/belastingvoordeel' => sub {
-    return template 'belatingvoordeel.tt', {}, { 'layout' => 'main.tt' };
+    return template 'belastingvoordeel.tt', {}, { 'layout' => 'main.tt' };
 };
 
 get '/bestuur' => sub {
