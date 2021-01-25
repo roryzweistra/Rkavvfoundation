@@ -34,7 +34,7 @@
 
             <div class="navbar-brand">
                 <div class="navbar-item">
-                    <span class="dark">RKAVV</span><span class="light">Foundation</span>
+                    <a href="http://www.rkavvfoundation.nl"><span class="dark">RKAVV</span><span class="light">Foundation</span></a>
                 </div>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -93,12 +93,12 @@
                             <a class="navbar-item">
                                 Grote giften
                             </a>
-                            <a class="navbar-item">
+                            <!--<a class="navbar-item">
                                 Steun ons via SMS
                             </a>
                             <a class="navbar-item">
                                 Vrijwilliger worden
-                            </a>
+                            </a>-->
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
         </div>
     </section>
 
-    <section class="section db-footer-popular">
+    <!--<section class="section db-footer-popular">
         <div class="container">
             <h2 class="title">Onze fantastische sponsors</h2>
             <div class="columns">
@@ -149,7 +149,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <footer class="footer">
         <div class="content has-text-centered">
