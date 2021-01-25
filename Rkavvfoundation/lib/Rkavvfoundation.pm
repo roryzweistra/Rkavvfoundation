@@ -22,6 +22,11 @@ get '/anbi' => sub {
     return template 'anbi.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/avg' => sub {
+    return template 'avg.tt', {}, { 'layout' => 'main.tt' };
+};
+
+
 get '/bedrijven' => sub {
     return template 'sponsorship.tt', {}, { 'layout' => 'main.tt' };
 };
