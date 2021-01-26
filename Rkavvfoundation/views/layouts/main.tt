@@ -4,12 +4,12 @@
     <meta charset="[% settings.charset %]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>[% title %]</title>
-    <link rel="stylesheet" href="[% request.uri_base %]/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Grab jQuery from a CDN, fall back to local if necessary -->
     <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">/* <![CDATA[ */
-        !window.jQuery && document.write('<script type="text/javascript" src="[% request.uri_base %]/javascripts/jquery.js"><\/script>')
+        !window.jQuery && document.write('<script type="text/javascript" src="/javascripts/jquery.js"><\/script>')
     /* ]]> */</script>
     <script src="https://kit.fontawesome.com/6f17725a76.js" crossorigin="anonymous"></script>
     <script src="/javascripts/rf.js"></script>
@@ -34,7 +34,7 @@
 
             <div class="navbar-brand">
                 <div class="navbar-item">
-                    <a href="http://www.rkavvfoundation.nl"><span class="dark">RKAVV</span><span class="light">Foundation</span></a>
+                    <a href="https://www.rkavvfoundation.nl"><span class="dark">RKAVV</span><span class="light">Foundation</span></a>
                 </div>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -51,7 +51,7 @@
                 <div class="navbar-end">
 
                     <div class="navbar-item">
-                        <a href="http://www.rkavvfoundation.nl" class="navbar-link">
+                        <a href="https://www.rkavvfoundation.nl" class="navbar-link">
                             Home
                         </a>
                     </div>
