@@ -35,6 +35,10 @@ get '/belastingvoordeel' => sub {
     return template 'belastingvoordeel.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/beleidsplan' => sub {
+    return template 'beleidsplan.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/bestuur' => sub {
     return template 'bestuur.tt', {}, { 'layout' => 'main.tt' };
 };
