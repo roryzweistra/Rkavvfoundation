@@ -64,6 +64,9 @@
                             <a href="/bestuur" class="navbar-item">
                                 Bestuur
                             </a>
+                            <a  href="/beleidsplan" class="navbar-item">
+                                Beleidsplan
+                            </a>
                             <a  href="/anbi" class="navbar-item">
                                 ANBI
                             </a>
