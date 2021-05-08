@@ -64,8 +64,9 @@
         <div class="container">
             <h2 class="title">Projecten die we willen gaan steunen</h2>
             <div class="columns">
-                <a href="http://festivalunlimited.nl/" target="_blank">
+
                 <div class="column top-location-image" style="background: url('/images/festival-unlimited.jpg') no-repeat; background-size: cover;">
+                    <a href="http://festivalunlimited.nl/" target="_blank">
                     <div class="hero">
                         <div class="hero-body">
                             <div class="container">
@@ -73,10 +74,12 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
-                </a>
-                <a href="https://www.facebook.com/rkavvbuurtresto" target="_blank">
+
+
                 <div class="column top-location-image" style="background: url('/images/buurt-resto.jpg') no-repeat; background-size: cover;">
+                    <a href="https://www.facebook.com/rkavvbuurtresto" target="_blank">
                     <div class="hero ">
                         <div class="hero-body">
                             <div class="container">
@@ -84,8 +87,9 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
-            </a>
+
                 <!--<div class="column top-location-image">
                     <div class="hero">
                         <div class="hero-body">
