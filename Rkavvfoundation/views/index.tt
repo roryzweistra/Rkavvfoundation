@@ -64,7 +64,7 @@
         <div class="container">
             <h2 class="title">Projecten die we willen gaan steunen</h2>
             <div class="columns">
-                <div class="column top-location-image">
+                <div class="column top-location-image" style="background: url('/images/festival-unlimited.jpg') no-repeat; background-size: cover;">
                     <div class="hero">
                         <div class="hero-body">
                             <div class="container">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="column top-location-image">
+                <div class="column top-location-image" style="background: url('/images/buurt-resto.jpg') no-repeat; background-size: cover;">
                     <div class="hero ">
                         <div class="hero-body">
                             <div class="container">
