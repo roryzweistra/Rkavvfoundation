@@ -84,7 +84,7 @@
                             Steun ons
                         </a>
                         <div class="navbar-dropdown">
-                            <a  href="/bedrijven" class="navbar-item">
+                            <a  href="/particulieren" class="navbar-item">
                                 Particulieren
                             </a>
                             <a href="/bedrijven" class="navbar-item">
