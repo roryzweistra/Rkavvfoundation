@@ -190,10 +190,11 @@
                 <div class="content db-social">
                     <h3 class="title">Blijf op de hoogte van ons laatste nieuws en activiteiten</h3>
                     <h3 class="title">Volg ons op social media</h3>
+                    <br /><br />
                     <a class="button db-button-social" href="https://fb.me/rkavvfoundation">Facebook</a>
-                    <br />
+                    <br /><br />
                     <a class="button db-button-social" href="https://www.linkedin.com/company/rkavv-foundation">Linkedin</a>
-                    <br />
+                    <br /><br />
                     <a class="button db-button-social" href="https://twitter.com/rkavvfoundation">Twitter</a>
                 </div>
             </div>
