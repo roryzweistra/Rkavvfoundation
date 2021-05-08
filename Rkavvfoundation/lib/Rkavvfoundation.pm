@@ -55,7 +55,6 @@ get '/particulieren' => sub {
     return template 'particulieren.tt', {}, { 'layout' => 'main.tt' };
 };
 
-
 get '/projecten' => sub {
     return template 'projecten.tt', {}, { 'layout' => 'main.tt' };
 };
