@@ -28,7 +28,7 @@ get '/avg' => sub {
 
 
 get '/bedrijven' => sub {
-    return template 'sponsorship.tt', {}, { 'layout' => 'main.tt' };
+    return template 'bedrijven.tt', {}, { 'layout' => 'main.tt' };
 };
 
 get '/belastingvoordeel' => sub {
@@ -65,7 +65,7 @@ get '/resultaten' => sub {
 };
 
 get '/start-een-actie' => sub {
-    return template 'start_eeen_actie.tt', {}, { 'layout' => 'main.tt' };
+    return template 'start_een_actie.tt', {}, { 'layout' => 'main.tt' };
 };
 
 get '/sponsorship' => sub {
