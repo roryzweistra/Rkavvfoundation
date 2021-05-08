@@ -47,12 +47,25 @@ get '/contact' => sub {
     return template 'contact.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/nalaten' => sub {
+    return template 'nalaten.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/particulieren' => sub {
+    return template 'particulieren.tt', {}, { 'layout' => 'main.tt' };
+};
+
+
 get '/projecten' => sub {
     return template 'projecten.tt', {}, { 'layout' => 'main.tt' };
 };
 
 get '/resultaten' => sub {
     return template 'resultaten.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/start-een-actie' => sub {
+    return template 'start_eeen_actie.tt', {}, { 'layout' => 'main.tt' };
 };
 
 get '/sponsorship' => sub {

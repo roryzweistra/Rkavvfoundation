@@ -84,23 +84,17 @@
                             Steun ons
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item">
+                            <a  href="/bedrijven" class="navbar-item">
                                 Particulieren
                             </a>
                             <a href="/bedrijven" class="navbar-item">
                                 Bedrijven
                             </a>
-                            <a href="/belastingvoordeel" class="navbar-item">
-                                Belastingvoordeel
-                            </a>
-                            <a href="/voordelig-schenken" class="navbar-item">
-                                Voordelig schenken
-                            </a>
-                            <a class="navbar-item">
+                            <a href="/nalaten" class="navbar-item">
                                 Nalaten
                             </a>
-                            <a class="navbar-item">
-                                Grote giften
+                            <a href="/start-een-actie" class="navbar-item">
+                                Start een actie
                             </a>
                             <!--<a class="navbar-item">
                                 Steun ons via SMS
