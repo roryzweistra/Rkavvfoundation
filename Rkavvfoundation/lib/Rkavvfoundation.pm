@@ -59,6 +59,10 @@ get '/resultaten' => sub {
     return template 'resultaten.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/start-een-actie' => sub {
+    return template 'start_eeen_actie.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/sponsorship' => sub {
     return template 'sponsorship.tt', {}, { 'layout' => 'main.tt' };
 };
