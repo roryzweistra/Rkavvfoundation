@@ -47,6 +47,10 @@ get '/contact' => sub {
     return template 'contact.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/nalaten' => sub {
+    return template 'nalaten.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/projecten' => sub {
     return template 'projecten.tt', {}, { 'layout' => 'main.tt' };
 };
