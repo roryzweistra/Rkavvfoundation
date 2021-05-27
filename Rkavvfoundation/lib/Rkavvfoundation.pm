@@ -75,6 +75,10 @@ get '/voordelig-schenken' => sub {
     return template 'voordelig_schenken.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/rkavv-aanmelden' => sub {
+    return template 'rkavv_aanmelden.tt', {}, { 'layout' => 'main.tt' };
+};
+
 #------------------------------------------------------------------------------------------------------------------
 
 1;
