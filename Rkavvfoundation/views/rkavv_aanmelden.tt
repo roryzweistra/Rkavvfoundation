@@ -8,7 +8,7 @@
                   <h1 class="title is-1">Aanmelden</h1>
                   <div class="columns">
                       <div class="column is-two-thirds">
-                          <form method="POST">
+                          <form method="POST" action="/rkavv-aanmelden" method="POST">
                                       <h2 class="subtitle is-4">Speler</h2>
                                       <div class="field is-horizontal">
 
@@ -18,8 +18,8 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="pax_1_gender" checked="checked"> Dhr.</label>
-                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="pax_1_gender"> Mevr.</label>
+                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender" checked="checked"> Man</label>
+                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender"> Vrouw</label>
                                                   </p>
                                                   <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
@@ -43,7 +43,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="initial" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
@@ -52,7 +52,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="pax_1_last_name" class="input is-info js-db-pax-1-last-name" type="text" placeholder="Achternaam" required="" aria-required="true">
+                                                      <input name="last_name" class="input is-info js-db-pax-1-last-name" type="text" placeholder="Achternaam" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je achternaam in volgens paspoort. Ben je getrouw gebruik dan hier je 'meisjesnaam'">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
