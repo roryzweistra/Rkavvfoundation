@@ -10,7 +10,6 @@ requires "LWP::Protocol::https"     => "0";
 requires "Data::Printer"            => "0";
 requires "XML::Hash::XS"            => "0";
 requires "Dancer2::Session::DBIC"   => "0";
-<<<<<<< HEAD
 requires "DateTime"		    => "0";
 requires "Dancer2::Plugin::Email"   => "0";
 requires "WWW::Mailchimp"		=> "0";
