@@ -1,3 +1,4 @@
+requires "ExtUtils::MakeMaker"       => "7.62";
 requires 'Dancer2'                  => '0';
 requires 'Starman'                  => '0';
 requires "YAML"                     => "0";
@@ -9,3 +10,6 @@ requires "LWP::Protocol::https"     => "0";
 requires "Data::Printer"            => "0";
 requires "XML::Hash::XS"            => "0";
 requires "Dancer2::Session::DBIC"   => "0";
+requires "Dancer2::Pluing::Email"   => "0";
+requires "DateTime"			=> "0";
+requires "WWW::Mailchimp"		=> "0";
