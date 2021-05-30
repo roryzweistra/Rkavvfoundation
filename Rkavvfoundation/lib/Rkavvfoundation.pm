@@ -6,6 +6,7 @@ our $VERSION = '0.000001';
 use DateTime;
 use Data::Printer;
 use Try::Tiny;
+use Business::MollieAPI;
 
 #------------------------------------------------------------------------------------------------------------------
 
@@ -78,6 +79,21 @@ get '/voordelig-schenken' => sub {
 
 get '/rkavv-aanmelden' => sub {
     return template 'rkavv_aanmelden.tt', {}, { 'layout' => 'main.tt' };
+};
+
+post '/donate' => sub {
+    my $api     = Business::MollieAPI->new(api_key => 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63' );
+    my $mollie  = {
+        'methods'   => $api->methods->all,
+        'issuers'   => $api->issuers->all,
+        'payment'   => $api->payments->create(
+            'amount'      => $payment_amount,
+            'redirectUrl' => 'https://www.rkavvfoundation.nl/boeken/bevestigen',
+            'description' => "Donatie",
+        ),
+    };
+
+    redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
 };
 
 post '/rkavv-aanmelden' => sub {
