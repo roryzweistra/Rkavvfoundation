@@ -82,6 +82,7 @@ get '/rkavv-aanmelden' => sub {
 };
 
 post '/donate' => sub {
+    my $payment_amount = body_parameters->get( 'amount' );
     my $api     = Business::MollieAPI->new(api_key => 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63' );
     my $mollie  = {
         'methods'   => $api->methods->all,
