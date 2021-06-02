@@ -82,19 +82,26 @@ get '/rkavv-aanmelden' => sub {
 };
 
 post '/donate' => sub {
-    my $payment_amount = body_parameters->get( 'amount' );
-    my $api     = Business::MollieAPI->new(api_key => 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63' );
-    my $mollie  = {
-        'methods'   => $api->methods->all,
-        'issuers'   => $api->issuers->all,
-        'payment'   => $api->payments->create(
-            'amount'      => $payment_amount,
-            'redirectUrl' => 'https://www.rkavvfoundation.nl/boeken/bevestigen',
-            'description' => "Donatie",
-        ),
-    };
+    my $random          = session->id;
+    my $payment_amount  = body_parameters->get( 'amount'    );
+    my $interval        = body_parameters->get( 'interval'  );
 
-    redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
+    if ( $interval eq 'one_off' ) {
+        my $api             = Business::MollieAPI->new(api_key => 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd' );
+        my $mollie          = {
+            'methods'   => $api->methods->all,
+            'issuers'   => $api->issuers->all,
+            'payment'   => $api->payments->create(
+                'amount'      => $payment_amount,
+                'redirectUrl' => 'https://www.rkavvfoundation.nl/boeken/bevestigen',
+                'description' => "Donatie " . $random,
+            ),
+        };
+
+        return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
+    }
+
+
 };
 
 post '/rkavv-aanmelden' => sub {
