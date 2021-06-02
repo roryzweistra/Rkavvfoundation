@@ -32,7 +32,7 @@
                         </div>
                         <div class="field">
                             <div class="control select is-expanded ">
-                                <select name="frequency" placeholder="Maandelijks">
+                                <select name="interval" placeholder="Maandelijks">
                                     <option disabled="">Maak een keuze:</option>
                                     <option selected="selected" value="monthly">Maandelijks</option>
                                     <option value="one_off">Eenmalig</option>
