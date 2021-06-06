@@ -23,9 +23,6 @@
                         	<label for="mce-EMAIL" class="label">Emailadres  <span class="asterisk">*</span></label>
                             <div class="control has-icons-left has-icons-right">
                         	    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                                <span class="icon is-small is-left">
-                                  <i class="fas fa-envelope"></i>
-                                </span>
                             </div>
                         </div>
 
