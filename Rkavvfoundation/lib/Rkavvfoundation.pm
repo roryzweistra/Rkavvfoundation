@@ -53,6 +53,10 @@ get '/nalaten' => sub {
     return template 'nalaten.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/nieuwsbrief' => sub {
+    return template 'nieuwsbrief.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/particulieren' => sub {
     return template 'particulieren.tt', {}, { 'layout' => 'main.tt' };
 };
