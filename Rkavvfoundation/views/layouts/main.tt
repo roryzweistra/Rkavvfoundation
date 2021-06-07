@@ -165,7 +165,6 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <div class="columns db-footer-nav-1">
-                <div class="column"></div>
                 <div class="column">
                     <a target="_blank" href="/statuten.pdf">Statuten</a>
                 </div>
