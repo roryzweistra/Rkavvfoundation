@@ -49,6 +49,18 @@ get '/contact' => sub {
     return template 'contact.tt', {}, { 'layout' => 'main.tt' };
 };
 
+get '/cookies' => sub {
+    return template 'cookies.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/copyright' => sub {
+    return template 'copyright.tt', {}, { 'layout' => 'main.tt' };
+};
+
+get '/disclaimer' => sub {
+    return template 'disclaimer.tt', {}, { 'layout' => 'main.tt' };
+};
+
 get '/nalaten' => sub {
     return template 'nalaten.tt', {}, { 'layout' => 'main.tt' };
 };
