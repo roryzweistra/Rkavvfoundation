@@ -170,28 +170,14 @@
                     <a target="_blank" href="/statuten.pdf">Statuten</a>
                 </div>
                 <div class="column">
-                    <a>Vacatures</a>
+                    <a href="/cookies">Cookies</a>
                 </div>
                 <div class="column">
-                    <a>Over ons</a>
-                </div>
-                <div class="column"></div>
-            </div>
-
-            <div class="columns db-footer-nav-2">
-                <div class="column"></div>
-                <div class="column">
-                    <a>Algemene Voorwaarden</a>
+                    <a href="/copyright">Copyright</a>
                 </div>
                 <div class="column">
-                    <a>Privacy Statement</a>
+                    <a href="/disclaimer">Disclaimer</a>
                 </div>
-
-                <div class="column">
-                    <a>Copyright</a>
-                </div>
-
-                <div class="column"></div>
             </div>
 
             <p class="db-footer-copyright">
