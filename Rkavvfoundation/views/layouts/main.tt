@@ -167,7 +167,7 @@
             <div class="columns db-footer-nav-1">
                 <div class="column"></div>
                 <div class="column">
-                    <a>Pers &amp; Media</a>
+                    <a target="_blank" href="/statuten.pdf">Statuten</a>
                 </div>
                 <div class="column">
                     <a>Vacatures</a>
