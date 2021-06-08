@@ -13,7 +13,8 @@
         </div>
     </div>
 </div>
-<section class="section">
+
+<!--<section class="section">
     <div class="container">
         <div class="home-search-box">
             <form action="/donate" method="POST">
@@ -51,7 +52,7 @@
             </form>
         </div>
     </div>
-</section>
+</section>-->
 
 
 
