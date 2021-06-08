@@ -109,7 +109,7 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-one-quarter">
+            <div class="column is-offset-one-third is-one-third">
                 <div class="content db-social">
                     <h3 class="title">Blijf op de hoogte van ons laatste nieuws en activiteiten</h3>
                     <h3 class="title">Volg ons op social media</h3>
