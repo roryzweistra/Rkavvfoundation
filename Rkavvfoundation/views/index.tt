@@ -100,103 +100,16 @@
                     </a>
                 </div>
 
-                <!--<div class="column top-location-image">
-                    <div class="hero">
-                        <div class="hero-body">
-                            <div class="container">
-                                <h2 class="title">Sponsorloterij</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
     </div>
 </section>
 
-<!--<section class="section">
-    <div class="home-holiday-types">
-        <div class="container">
-            <h2 class="title">Dit is wat we doen</h2>
-            <div class="columns">
-                <div class="column">
-                    <div class="home-vacation-type">
-                        Unlimited festival
-                    </div>
-                    <div class="home-vacation-type">
-                        Diners
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="home-vacation-type">
-                        Meals on wheels
-                    </div>
-                    <div class="home-vacation-type">
-                        Walkabouts
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="home-vacation-type">
-                        Klaverjassen
-                    </div>
-                    <div class="home-vacation-type">
-                        Bingo
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>-->
 
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-two-thirds">
-                <div class="content db-newsletter">
-                    <div class="columns">
-                        <div class="column is-two-thirds">
-                            <h3 class="title">Altijd als eerste op de hoogte zijn van ons laatste nieuws!</h3>
-                            <form class="form" action="">
-
-                                <div class="field">
-                                    <label class="label">Uw naam</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input">
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <label class="label">Uw e-mail</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input" type="email" placeholder="voorbeeld@email.nl" value="">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-envelope"></i>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <div class="control">
-                                        <label class="checkbox">
-                                            <input name="terms" type="checkbox" />
-                                            Ik ga akkoord met de <a href="#">privacy voorwaarden</a>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="field is-grouped">
-                                    <div class="control">
-                                        <a class="button db-button" href="">Aanmelden</a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="column"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
+            <div class="column is-offset-1-quarter is-two-quarters">
                 <div class="content db-social">
                     <h3 class="title">Blijf op de hoogte van ons laatste nieuws en activiteiten</h3>
                     <h3 class="title">Volg ons op social media</h3>
