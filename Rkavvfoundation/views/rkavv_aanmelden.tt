@@ -542,35 +542,16 @@
                                       </div>
 
                                       <h2 class="subtitle is-4">Vrijwilligers</h2>
-                                      <p>
-                                          Het is bij RKAVV verplicht om een vrijwillig(st)ersfunctie in te vullen. Dus ja, ik vind het leuk om het
-                                          volgende bij RKAVV te gaan vervullen:<br /><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> kantine-medewerk(st)er (+/- 5 uur per maand)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid zijn van de Kantine Commissie (met een groep alles rondom kantinewerk organiseren)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> teamleider (bij alle wedstrijden van het team)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> scheidsrechter (wekelijks (minimaal) 1 wedstrijd)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> trainer (ik beschik wel/niet over trainersdiploma)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Sponsorcommissie</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Technische Commissie Voetbalzaken</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Web redactie</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid zijn van ICT en Social Media commissie</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Jeugd Activiteiten Commissie (JAC)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Senioren Activiteiten Commissie (SAC)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Onderhoudsploeg (op woensdagochtend 4 uur kleine onderhoudswerken)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Schoonmaakploeg (maandagochtend kantine schoonmaken je krijgt € 2 per uur)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Supportersvereniging (ondersteunend werk bij thuiswedstrijden van het 1e)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van het RKAVV kledingswinkeltje</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van de Commissie van Gedrag</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> leidinggevende functie (Hoofdbestuur, Jeugdbestuur, ICT, Multi Media, ov. Commissies)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van bijzondere projecten (verbouwing kantine, RKAVV TV, Steward etc.)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> lid van dienst(Gastvrouw/heer op de zaterdag of zondag) (+/- 5 uur per maand)</label><br />
-                                          <label><input type="checkbox" name="volunteer_task_" /> ik ben al vrijwillig(st)er van RKAVV!</label><br />
-                                          <br />
-                                          Indien er voor wordt gekozen om geen vrijwilligerstaak uit te voeren, zal de contributie met 50 euro
-                                          worden verhoogd. Wanneer meerdere kinderen van 1 gezin lid zijn, zal de verhoging maximaal 75 euro
-                                          voor het gehele gezin bedragen. RKAVV stuurt hiervoor een nota en zorgt voor automatische incasso
-                                          net als voor het contributiebedrag.
-                                      </p>
+
+                                        <p>Net als iedere andere voetbalclub kan RKAVV niet functioneren zonder vrijwilligers. Het uitgangspunt is dat ieder lid ook een vrijwilligerstaak oppakt voor minimaal
+                                          10 uur per seizoen. Dit kan door het lid zelf worden gedaan maar ook door een ouder, opa of oma, kennis of begeleider. Je kan je aanmelden als vrijwilliger op
+                                          de RKAVV website https://www.rkavv.nl/aanmelden-vrijwilligers. Hier vind je tevens de openstaande vacatures.</p>
+
+                                        <p>Indien er geen vrijwilligerstaak wordt uitgevoerd zal de contributie met €50,-- worden verhoogd. Wanneer meerdere kinderen van 1 gezin lid zijn, zal de verhoging
+                                        maximaal €75,-- voor het hele gezin bedragen. Deze contributie zal eind November worden geïncasseerd. Indien je aan je vrijwilligersverplichting hebt voldaan vind je
+                                        hier https://www.rkavv.nl/aanmelden-vrijwilligers ook een formulier om de contributie terug te laten storten of niet te laten incasseren.</p>
+                                        <label><input type="checkbox" name="volunteer_task_" /> Ik ga akkoord met de vrijwilligersvoorwaarden.</label><br />
+
 
                                       <h2 class="subtitle is-4">Automatische Incasso Contributie</h2>
                                       <p>
