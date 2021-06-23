@@ -121,89 +121,161 @@ post '/donate' => sub {
 };
 
 post '/rkavv-aanmelden' => sub {
-#     CREATE TABLE `signup` (
-#   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-#   `mollie_customer_id` varchar(20) DEFAULT NULL,
-#   `mollie_mandate_id` varchar(20) DEFAULT NULL,
-#   `mollie_mandate_type` varchar(20) DEFAULT NULL,
-#   `gender` varchar(1) DEFAULT NULL,
-#   `first_name` varchar(250) DEFAULT NULL,
-#   `initials` varchar(10) DEFAULT NULL,
-#   `last_name` varchar(250) DEFAULT NULL,
-#   `birthdate` date DEFAULT NULL,
-#   `nationality` varchar(250) DEFAULT NULL,
-#   `postcode` varchar(15) DEFAULT '',
-#   `number` varchar(10) DEFAULT NULL,
-#   `place` varchar(250) DEFAULT '',
-#   `telephone` varchar(20) DEFAULT NULL,
-#   `email` varchar(250) DEFAULT NULL,
-#   `category` varchar(10) DEFAULT NULL,
-#   `person_1_first_name` varchar(250) DEFAULT NULL,
-#   `person_1_initials` varchar(10) DEFAULT NULL,
-#   `person_1_last_name` varchar(250) DEFAULT NULL,
-#   `person_1_telephone` varchar(20) DEFAULT NULL,
-#   `person_1_email` varchar(250) DEFAULT NULL,
-#   `person_2_first_name` varchar(250) DEFAULT NULL,
-#   `person_2_initials` varchar(10) DEFAULT NULL,
-#   `person_2_last_name` varchar(250) DEFAULT NULL,
-#   `person_2_telephone` varchar(20) DEFAULT NULL,
-#   `person_2_email` varchar(250) DEFAULT NULL,
-#   `former_player` int(1) DEFAULT NULL,
-#   `id_type` varchar(20) DEFAULT NULL,
-#   `id_number` varchar(30) DEFAULT NULL,
-#   `intake` int(1) DEFAULT NULL,
-#   `consent_info` int(1) DEFAULT NULL,
-#   `consent_pay` int(1) DEFAULT NULL,
-#   `consent_match` int(1) DEFAULT NULL,
-#   `consent_media` int(1) DEFAULT NULL,
-#   `consent_volunteer` int(1) DEFAULT NULL,
-#   `payment_term` int(1) DEFAULT NULL,
-#   `account_iban` varchar(30) DEFAULT NULL,
-#   `account_name` varchar(50) DEFAULT NULL,
-#   `account_place` varchar(50) DEFAULT NULL,
-#   PRIMARY KEY (`id`)
-# ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    # CREATE TABLE `signup` (
+    #   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    #   `mollie_customer_id` varchar(20) DEFAULT NULL,
+    #   `mollie_mandate_id` varchar(20) DEFAULT NULL,
+    #   `mollie_mandate_type` varchar(20) DEFAULT NULL,
+    #   `mollie_mandate_status` varchar(20) DEFAULT NULL,
+    #   `gender` varchar(1) DEFAULT NULL,
+    #   `first_name` varchar(250) DEFAULT NULL,
+    #   `initials` varchar(10) DEFAULT NULL,
+    #   `last_name` varchar(250) DEFAULT NULL,
+    #   `birthdate` date DEFAULT NULL,
+    #   `nationality` varchar(250) DEFAULT NULL,
+    #   `postcode` varchar(15) DEFAULT '',
+    #   `number` varchar(10) DEFAULT NULL,
+    #   `place` varchar(250) DEFAULT '',
+    #   `telephone` varchar(20) DEFAULT NULL,
+    #   `email` varchar(250) DEFAULT NULL,
+    #   `category` varchar(10) DEFAULT NULL,
+    #   `person_1_first_name` varchar(250) DEFAULT NULL,
+    #   `person_1_initials` varchar(10) DEFAULT NULL,
+    #   `person_1_last_name` varchar(250) DEFAULT NULL,
+    #   `person_1_telephone` varchar(20) DEFAULT NULL,
+    #   `person_1_email` varchar(250) DEFAULT NULL,
+    #   `person_2_first_name` varchar(250) DEFAULT NULL,
+    #   `person_2_initials` varchar(10) DEFAULT NULL,
+    #   `person_2_last_name` varchar(250) DEFAULT NULL,
+    #   `person_2_telephone` varchar(20) DEFAULT NULL,
+    #   `person_2_email` varchar(250) DEFAULT NULL,
+    #   `former_player` int(1) DEFAULT NULL,
+    #   `id_type` varchar(20) DEFAULT NULL,
+    #   `id_number` varchar(30) DEFAULT NULL,
+    #   `intake` int(1) DEFAULT NULL,
+    #   `consent_info` int(1) DEFAULT NULL,
+    #   `consent_pay` int(1) DEFAULT NULL,
+    #   `consent_match` int(1) DEFAULT NULL,
+    #   `consent_media` int(1) DEFAULT NULL,
+    #   `consent_volunteer` int(1) DEFAULT NULL,
+    #   `payment_term` int(1) DEFAULT NULL,
+    #   `account_iban` varchar(30) DEFAULT NULL,
+    #   `account_name` varchar(50) DEFAULT NULL,
+    #   `account_place` varchar(50) DEFAULT NULL,
+    #   PRIMARY KEY (`id`)
+    # ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-gender
-first_name
-initials
-last_name
-birthdate_day
-birthdate_month
-birthdate_year
-nationality
-postcode
-number
-address
-place
-telephone
-email
-category
-person_1_first_name
-person_1_initials
-person_1_last_name
-person_1_telephone
-person_1_email
-person_2_first_name
-person_2_initials
-person_2_last_name
-person_2_telephone
-person_2_email
-former_player
-id_type
-id_number
-intake
-consent_info
-consent_pay
-consent_match
-consent_media
-consent_volunteer
-payment_term
-account_iban
-account_name
-account_place
+    my @allowed = qw |
+        id
+        mollie_customer_id
+        mollie_mandate_id
+        mollie_mandate_type
+        mollie_mandate_status
+        gender
+        first_name
+        initials
+        last_name
+        birthdate_day
+        birthdate_month
+        birthdate_year
+        nationality
+        postcode
+        number
+        address
+        place
+        telephone
+        email
+        category
+        person_1_first_name
+        person_1_initials
+        person_1_last_name
+        person_1_telephone
+        person_1_email
+        person_2_first_name
+        person_2_initials
+        person_2_last_name
+        person_2_telephone
+        person_2_email
+        former_player
+        id_type
+        id_number
+        intake
+        consent_info
+        consent_pay
+        consent_match
+        consent_media
+        consent_volunteer
+        payment_term
+        account_iban
+        account_name
+        account_place
+    |;
 
+    my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
+    my $data    = {};
 
+    foreach my $allowed ( @allowed ) {
+        $data->{ $allowed } => body_parameters->get( $allowed );
+    }
+
+    # Create record in db.
+    my $user = schema( 'Rkavv' )->resultset( 'signup' )->create( $data );
+
+    if ( ! $user->in_storage ) {
+        $user->insert;
+    }
+
+    # Create customer in Mollie account.
+    my $header          = [
+        'Content-Type'  => 'application/json; charset=UTF-8',
+        'Authorization' => 'Bearer ' . $api_key,
+    ];
+
+    my $customer_email = $data->{ 'email' };
+    if ( $data->{ 'person_1_email' } ) {
+        $customer_email = $data->{ 'person_1_email' };
+    }
+    elsif ( $data->{ 'person_2_email' } ) {
+        $customer_email = $data->{ 'person_2_email' };
+    }
+
+    my $mollie_values   = {
+        'name'  => $data->{ 'account_name' },
+        'email' => $customer_email,
+    };
+
+    my $url             = 'https://api.mollie.com/v2/customers';
+    my $encoded_data    = encode_json( $mollie_values );
+    my $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+    my $lwp             = LWP::UserAgent->new;
+    my $response        = $lwp->request( $r );
+    my $mollie_customer = from_json( $response->content );
+
+    if ( $mollie_customer ) {
+        $user->mollie_customer_id( $mollie_customer->{ 'id' } );
+        $user->update;
+
+        $url = 'https://api.mollie.com/v2/customers/' . $user->mollie_customer_id . '/mandates';
+        my $mandate_values = {
+            'method'            => 'directdebit',
+            'consumerName'      => $user->account_name,
+            'consumerAccount'   => $user->account_iban,
+            'mandateReference'  => 'Rkavv-signup-' . $user->id,
+        };
+
+        $encoded_data       = encode_json( $mandate_values );
+        $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+        $response           = $lwp->request( $r );
+        my $mollie_mandate  = from_json( $response->content );
+
+        if ( $mollie_mandate ) {
+            $user->mollie_mandate_id( $mollie_mandate->{ 'id' } );
+            $user->mollie_mandate_type( $mollie_mandate->{ 'method' } );
+            $user->mollie_mandate_status( $mollie_mandate->{ 'status' } );
+            $user->update;
+        }
+
+    }
 
     use Dancer2::Plugin::Email;
 
