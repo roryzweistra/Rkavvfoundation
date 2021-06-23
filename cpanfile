@@ -14,3 +14,4 @@ requires "DateTime"		    => "0";
 requires "Dancer2::Plugin::Email"   => "0";
 requires "WWW::Mailchimp"		=> "0";
 requires "Business::MollieAPI"		=> "0";
+requires "DBIx::Class::Schema::Loader"	=> "0";
