@@ -121,6 +121,90 @@ post '/donate' => sub {
 };
 
 post '/rkavv-aanmelden' => sub {
+#     CREATE TABLE `signup` (
+#   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+#   `mollie_customer_id` varchar(20) DEFAULT NULL,
+#   `mollie_mandate_id` varchar(20) DEFAULT NULL,
+#   `mollie_mandate_type` varchar(20) DEFAULT NULL,
+#   `gender` varchar(1) DEFAULT NULL,
+#   `first_name` varchar(250) DEFAULT NULL,
+#   `initials` varchar(10) DEFAULT NULL,
+#   `last_name` varchar(250) DEFAULT NULL,
+#   `birthdate` date DEFAULT NULL,
+#   `nationality` varchar(250) DEFAULT NULL,
+#   `postcode` varchar(15) DEFAULT '',
+#   `number` varchar(10) DEFAULT NULL,
+#   `place` varchar(250) DEFAULT '',
+#   `telephone` varchar(20) DEFAULT NULL,
+#   `email` varchar(250) DEFAULT NULL,
+#   `category` varchar(10) DEFAULT NULL,
+#   `person_1_first_name` varchar(250) DEFAULT NULL,
+#   `person_1_initials` varchar(10) DEFAULT NULL,
+#   `person_1_last_name` varchar(250) DEFAULT NULL,
+#   `person_1_telephone` varchar(20) DEFAULT NULL,
+#   `person_1_email` varchar(250) DEFAULT NULL,
+#   `person_2_first_name` varchar(250) DEFAULT NULL,
+#   `person_2_initials` varchar(10) DEFAULT NULL,
+#   `person_2_last_name` varchar(250) DEFAULT NULL,
+#   `person_2_telephone` varchar(20) DEFAULT NULL,
+#   `person_2_email` varchar(250) DEFAULT NULL,
+#   `former_player` int(1) DEFAULT NULL,
+#   `id_type` varchar(20) DEFAULT NULL,
+#   `id_number` varchar(30) DEFAULT NULL,
+#   `intake` int(1) DEFAULT NULL,
+#   `consent_info` int(1) DEFAULT NULL,
+#   `consent_pay` int(1) DEFAULT NULL,
+#   `consent_match` int(1) DEFAULT NULL,
+#   `consent_media` int(1) DEFAULT NULL,
+#   `consent_volunteer` int(1) DEFAULT NULL,
+#   `payment_term` int(1) DEFAULT NULL,
+#   `account_iban` varchar(30) DEFAULT NULL,
+#   `account_name` varchar(50) DEFAULT NULL,
+#   `account_place` varchar(50) DEFAULT NULL,
+#   PRIMARY KEY (`id`)
+# ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+gender
+first_name
+initials
+last_name
+birthdate_day
+birthdate_month
+birthdate_year
+nationality
+postcode
+number
+address
+place
+telephone
+email
+category
+person_1_first_name
+person_1_initials
+person_1_last_name
+person_1_telephone
+person_1_email
+person_2_first_name
+person_2_initials
+person_2_last_name
+person_2_telephone
+person_2_email
+former_player
+id_type
+id_number
+intake
+consent_info
+consent_pay
+consent_match
+consent_media
+consent_volunteer
+payment_term
+account_iban
+account_name
+account_place
+
+
+
     use Dancer2::Plugin::Email;
 
     my $text = "Naam: " . body_parameters->get( 'first_name' ) . ' ' . body_parameters->get( 'initial' ) . ' '
