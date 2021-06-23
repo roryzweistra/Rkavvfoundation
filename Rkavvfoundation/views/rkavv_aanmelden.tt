@@ -43,7 +43,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="initial" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
@@ -365,7 +365,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_1_initial" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="person_1_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
@@ -421,7 +421,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_2_initial" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="person_2_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
