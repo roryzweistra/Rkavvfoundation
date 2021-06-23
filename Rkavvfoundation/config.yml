@@ -26,3 +26,15 @@ engines:
     template_toolkit:
       start_tag: '[%'
       end_tag:   '%]'
+
+plugins:
+  DBIC:
+    Directbookers:
+      dsn: 'dbi:mysql:rkavv'
+      schema_class: 'Rkavv::Schema'
+      user: 'root'
+      password: ''
+      options:
+        RaiseError: 1
+        PrintError: 1
+        mysql_enable_utf8: 1
