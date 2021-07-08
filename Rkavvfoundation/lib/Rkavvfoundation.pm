@@ -7,6 +7,7 @@ use DateTime;
 use Data::Printer;
 use Try::Tiny;
 use Business::MollieAPI;
+use Dancer2::Plugin::DBIC;
 
 #------------------------------------------------------------------------------------------------------------------
 
@@ -175,9 +176,6 @@ post '/rkavv-aanmelden' => sub {
         first_name
         initials
         last_name
-        birthdate_day
-        birthdate_month
-        birthdate_year
         nationality
         postcode
         number
@@ -212,14 +210,18 @@ post '/rkavv-aanmelden' => sub {
     |;
 
     my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
+    $api_key = 'live_Fp7CcE6PsAgFb3eWSp36guFtpzwWJP';
     my $data    = {};
 
-    foreach my $allowed ( @allowed ) {
-        $data->{ $allowed } => body_parameters->get( $allowed );
+    foreach my $key ( @allowed ) {
+        $data->{ $key } = body_parameters->get( $key );
     }
 
+	use Data::Printer;
+	p $data;
+
     # Create record in db.
-    my $user = schema( 'Rkavv' )->resultset( 'signup' )->create( $data );
+    my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $data );
 
     if ( ! $user->in_storage ) {
         $user->insert;

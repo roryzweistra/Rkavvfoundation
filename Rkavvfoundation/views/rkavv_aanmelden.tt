@@ -531,12 +531,12 @@
 
                                       <h2 class="subtitle is-4">Toestemming</h2>
                                       <p>Ondergetekende:<br /><br />
-                                          <label><input type="checkbox" name="consent_info" /> geeft hierbij toestemming aan RKAVV om zijn/ haar persoonsgegevens te registeren.</label><br />
-                                          <label><input type="checkbox" name="consent_pay" /> geeft toestemming dat RKAVV gegevens kan delen met (toekomstige) dienstverleners op het vlak van
+                                          <label><input type="checkbox" name="consent_info" value="1" /> geeft hierbij toestemming aan RKAVV om zijn/ haar persoonsgegevens te registeren.</label><br />
+                                          <label><input type="checkbox" name="consent_pay" value="1" /> geeft toestemming dat RKAVV gegevens kan delen met (toekomstige) dienstverleners op het vlak van
                                           diensten t.b.v. contributie inning.</label><br />
-                                          <label><input type="checkbox" name="consent_match" /> geeft toestemming tot het maken van foto’s van voetbalwedstrijden, toernooien, evenementen
+                                          <label><input type="checkbox" name="consent_match" value="1" /> geeft toestemming tot het maken van foto’s van voetbalwedstrijden, toernooien, evenementen
                                           waaraan in club verband wordt meegedaan.</label><br />
-                                          <label><input type="checkbox" name="consent_media" /> geeft toestemming tot publicatie van foto’s, voor en achternaam in de krant, website of andere media
+                                          <label><input type="checkbox" name="consent_media value="1"" /> geeft toestemming tot publicatie van foto’s, voor en achternaam in de krant, website of andere media
                                           als dat betrekking heeft op activiteiten die in clubverband zijn gedaan.</label><br />
                                       </p>
                                       </div>
@@ -550,7 +550,7 @@
                                         <p>Indien er geen vrijwilligerstaak wordt uitgevoerd zal de contributie met €50,-- worden verhoogd. Wanneer meerdere kinderen van 1 gezin lid zijn, zal de verhoging
                                         maximaal €75,-- voor het hele gezin bedragen. Deze contributie zal eind November worden geïncasseerd. Indien je aan je vrijwilligersverplichting hebt voldaan vind je
                                         hier https://www.rkavv.nl/aanmelden-vrijwilligers ook een formulier om de contributie terug te laten storten of niet te laten incasseren.</p>
-                                        <label><input type="checkbox" name="consent_volunteer" /> Ik ga akkoord met de vrijwilligersvoorwaarden.</label><br />
+                                        <label><input type="checkbox" name="consent_volunteer" value="1" /> Ik ga akkoord met de vrijwilligersvoorwaarden.</label><br />
 
 
                                       <h2 class="subtitle is-4">Automatische Incasso Contributie</h2>
