@@ -283,6 +283,7 @@ post '/rkavv-aanmelden' => sub {
 
 	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
+    }
 };
 
 post 'rkavv-aanmelden-verwerken' => sub {
@@ -295,6 +296,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
     )->first;
 
     if ( $user ) {
+	 my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
         my $header          = [
             'Content-Type'  => 'application/json; charset=UTF-8',
             'Authorization' => 'Bearer ' . $api_key,
@@ -311,7 +313,8 @@ post 'rkavv-aanmelden-verwerken' => sub {
         # };
 
         #$encoded_data       = encode_json( $mandate_values );
-        my $r                  = HTTP::Request->new( 'GET', $url, $header, $encoded_data );
+    my $lwp             = LWP::UserAgent->new;
+        my $r                  = HTTP::Request->new( 'GET', $url, $header );
         my $response           = $lwp->request( $r );
         my $mollie_mandate      = from_json( $response->content );
 
