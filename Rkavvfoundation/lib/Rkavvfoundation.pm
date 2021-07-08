@@ -318,7 +318,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         if ( $mollie_mandate ) {
             $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' } );
             $user->mollie_mandate_type( $mollie_mandate->{ 'method' } );
-            $user->mollie_mandate_status( $mollie_mandate->{ 'status' } );
+            $user->mollie_payment_status( $mollie_mandate->{ 'status' } );
             $user->update;
         }
 
