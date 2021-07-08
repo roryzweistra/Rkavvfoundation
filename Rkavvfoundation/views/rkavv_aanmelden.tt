@@ -18,8 +18,8 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender" checked="checked"> Man</label>
-                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender"> Vrouw</label>
+                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender" checked="checked" value="m"> Man</label>
+                                                      <label><input class="is-info js-db-pax-1-gender" type="radio" name="gender" value="f"> Vrouw</label>
                                                   </p>
                                                   <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
