@@ -260,67 +260,89 @@ post '/rkavv-aanmelden' => sub {
         $url = 'https://api.mollie.com/v2/payments';
 
         my $payment_values = {
-	    'amount'	=> {
-	    	'currency'	=> 'EUR',
-		'value'		=> '0.01',
-            }, 
+    	    'amount'	=> {
+    	    	'currency'	=> 'EUR',
+                'value'		=> '0.01',
+            },
             'customerId'        => $user->mollie_customer_id,
             'sequenceType'      => 'first',
             'description'   	=> 'RKAVV incasso machtiging',
-            'redirectUrl'  	=> 'https://www.rkavvfoundation.nl',
-            'webhookUrl'  	=> 'https://www.rkavvfoundation.nl',
+            'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
+            'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/rkavv-aanmelden-verwerken',
         };
 
         $encoded_data       = encode_json( $payment_values );
         $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
         $response           = $lwp->request( $r );
         my $mollie_payment  = from_json( $response->content );
-	p $mollie_payment;
+        $user->mollie_payment_id( $mollie_payment->{ 'id' } );
+        $user->mollie_payment_status( 'open' );
+        $user->update;
 
-	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' };	
-	
+        p $mollie_payment;
 
-        $url = 'https://api.mollie.com/v2/customers/' . $user->mollie_customer_id . '/mandates';
-        my $mandate_values = {
-            'method'            => 'directdebit',
-            'consumerName'      => $user->account_name,
-            'consumerAccount'   => $user->account_iban,
-            'mandateReference'  => 'Rkavv-signup-' . $user->id,
-        };
+	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
-        $encoded_data       = encode_json( $mandate_values );
-        $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
-        $response           = $lwp->request( $r );
-        my $mollie_mandate  = from_json( $response->content );
+};
+
+post 'rkavv-aanmelden-verwerken' => sub {
+    my $payment_id = body_parameters->get( 'id' );
+
+    my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
+        {
+            'me.mollie_payment_id' => $payment_id,
+        }
+    )->first;
+
+    if ( $user ) {
+        my $header          = [
+            'Content-Type'  => 'application/json; charset=UTF-8',
+            'Authorization' => 'Bearer ' . $api_key,
+        ];
+
+        my $url = 'https://api.mollie.com/v2/payments/' . $payment_id . '?testmode=true';
+
+
+        # my $mandate_values = {
+        #     'method'            => 'directdebit',
+        #     'consumerName'      => $user->account_name,
+        #     'consumerAccount'   => $user->account_iban,
+        #     'mandateReference'  => 'Rkavv-signup-' . $user->id,
+        # };
+
+        #$encoded_data       = encode_json( $mandate_values );
+        my $r                  = HTTP::Request->new( 'GET', $url, $header, $encoded_data );
+        my $response           = $lwp->request( $r );
+        my $mollie_mandate      = from_json( $response->content );
 
         if ( $mollie_mandate ) {
-            $user->mollie_mandate_id( $mollie_mandate->{ 'id' } );
+            $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' } );
             $user->mollie_mandate_type( $mollie_mandate->{ 'method' } );
             $user->mollie_mandate_status( $mollie_mandate->{ 'status' } );
             $user->update;
         }
 
-    }
+        use Dancer2::Plugin::Email;
 
-    use Dancer2::Plugin::Email;
+        my $text = "Naam: " . $user->first_name . ' ' . $user->last_name . "\n";
 
-    my $text = "Naam: " . body_parameters->get( 'first_name' ) . ' ' . body_parameters->get( 'initial' ) . ' '
-        . body_parameters->get( 'last_name' ) . "\n";
-
-    try {
-        set layout => '';
-        email {
-            from    => 'rory@ryuu.nl',
-            to      => 'rory@ryuu.nl',
-            #to      => 'rory@ryuu.nl',
-            subject => "Aanmelding",
-            body    => $text,
-            type    => 'text',
+        try {
+            set layout => '';
+            email {
+                from    => 'rory@ryuu.nl',
+                to      => 'rory@ryuu.nl',
+                #to      => 'rory@ryuu.nl',
+                subject => "Aanmelding",
+                body    => $text,
+                type    => 'text',
+            };
+        }
+        catch {
+            debug "Could not send email: $_";
         };
+
     }
-    catch {
-        debug "Could not send email: $_";
-    };
+
 };
 
 #------------------------------------------------------------------------------------------------------------------
