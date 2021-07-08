@@ -210,7 +210,6 @@ post '/rkavv-aanmelden' => sub {
     |;
 
     my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
-    $api_key = 'live_Fp7CcE6PsAgFb3eWSp36guFtpzwWJP';
     my $data    = {};
 
     foreach my $key ( @allowed ) {
@@ -256,6 +255,30 @@ post '/rkavv-aanmelden' => sub {
     if ( $mollie_customer ) {
         $user->mollie_customer_id( $mollie_customer->{ 'id' } );
         $user->update;
+
+	# Create first payment.
+        $url = 'https://api.mollie.com/v2/payments';
+
+        my $payment_values = {
+	    'amount'	=> {
+	    	'currency'	=> 'EUR',
+		'value'		=> '0.01',
+            }, 
+            'customerId'        => $user->mollie_customer_id,
+            'sequenceType'      => 'first',
+            'description'   	=> 'RKAVV incasso machtiging',
+            'redirectUrl'  	=> 'https://www.rkavvfoundation.nl',
+            'webhookUrl'  	=> 'https://www.rkavvfoundation.nl',
+        };
+
+        $encoded_data       = encode_json( $payment_values );
+        $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+        $response           = $lwp->request( $r );
+        my $mollie_payment  = from_json( $response->content );
+	p $mollie_payment;
+
+	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' };	
+	
 
         $url = 'https://api.mollie.com/v2/customers/' . $user->mollie_customer_id . '/mandates';
         my $mandate_values = {
