@@ -43,12 +43,12 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="1" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
                                                   </p>
-                                                  <p class="help is-danger has-text-left">* Verplicht (min 2 tekens)</p>
+                                                  <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
@@ -365,12 +365,12 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_1_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="person_1_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="1" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
                                                   </p>
-                                                  <p class="help is-danger has-text-left">* Verplicht (min 2 tekens)</p>
+                                                  <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
@@ -392,13 +392,13 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_1_telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="0642131654" aria-invalid="false">
+                                                      <input name="person_1_telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="" aria-invalid="false">
                                                   </p>
                                                   <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_1_email" class="input is-info  valid" type="text" placeholder="Text input" value="rory@zweistra.eu" aria-invalid="false">
+                                                      <input name="person_1_email" class="input is-info  valid" type="text" placeholder="Text input" value="" aria-invalid="false">
                                                   </p>
                                               </div>
                                           </div>
@@ -421,7 +421,7 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_2_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="2" required="" aria-required="true">
+                                                      <input name="person_2_initials" class="input is-info js-db-pax-1-first-name" type="text" placeholder="Initialen" minlength="1" required="" aria-required="true">
                                                       <span data-tooltip="Vul hier je roepnaam in">
                                                           <i class="icon fas fa-info-circle" aria-hidden="true"></i>
                                                       </span>
@@ -446,12 +446,12 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_2_telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="0642131654" aria-invalid="false">
+                                                      <input name="person_2_telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="" aria-invalid="false">
                                                   </p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="person_2_email" class="input is-info  valid" type="text" placeholder="Text input" value="rory@zweistra.eu" aria-invalid="false">
+                                                      <input name="person_2_email" class="input is-info  valid" type="text" placeholder="Text input" value="" aria-invalid="false">
                                                   </p>
                                               </div>
                                           </div>
