@@ -98,26 +98,79 @@ get '/rkavv-aanmelden' => sub {
     return template 'rkavv_aanmelden.tt', {}, { 'layout' => 'main.tt' };
 };
 
-post '/donate' => sub {
+post '/doneren' => sub {
     my $random          = session->id;
     my $payment_amount  = body_parameters->get( 'amount'    );
     my $interval        = body_parameters->get( 'interval'  );
+    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
 
     if ( $interval eq 'one_off' ) {
-        my $api             = Business::MollieAPI->new(api_key => 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd' );
+        my $api             = Business::MollieAPI->new( api_key => $api_key );
         my $mollie          = {
             'methods'   => $api->methods->all,
             'issuers'   => $api->issuers->all,
             'payment'   => $api->payments->create(
                 'amount'      => $payment_amount,
-                'redirectUrl' => 'https://www.rkavvfoundation.nl/boeken/bevestigen',
+                'redirectUrl' => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
                 'description' => "Donatie " . $random,
             ),
         };
 
         return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
     }
+    else {
+        my $data    = {};
 
+        # Create customer in Mollie account.
+        my $header          = [
+            'Content-Type'  => 'application/json; charset=UTF-8',
+            'Authorization' => 'Bearer ' . $api_key,
+        ];
+
+        my $mollie_values   = {
+            'metadata'  => {
+                'session_id'    => $random
+            },
+        };
+
+        my $url             = 'https://api.mollie.com/v2/customers';
+        my $encoded_data    = encode_json( $mollie_values );
+        my $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+        my $lwp             = LWP::UserAgent->new;
+        my $response        = $lwp->request( $r );
+        my $mollie_customer = from_json( $response->content );
+
+        if ( $mollie_customer ) {
+            # $user->mollie_customer_id( $mollie_customer->{ 'id' } );
+            # $user->update;
+
+    	    # Create first payment.
+            $url = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+
+            my $interval_value = '1 month';
+
+            if ( $interval eq  'yearly' ) {
+                $interval_value = '12 months';
+            }
+            elsif ( $interval eq 'quarterly' ) {
+                $interval_value = '3 months';
+            }
+
+            my $payment_values = {
+        	    'amount'	=> {
+        	    	'currency'	=> 'EUR',
+                    'value'		=> $payment_amount,
+                },
+                'interval'          => $interval_value,
+                'description'   	=> 'Uw donatie aan RKAVV Foundation',
+                'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+            };
+
+            p $mollie_payment;
+
+    	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+        }
+    }
 
 };
 
@@ -256,7 +309,7 @@ post '/rkavv-aanmelden' => sub {
         $user->mollie_customer_id( $mollie_customer->{ 'id' } );
         $user->update;
 
-	# Create first payment.
+	    # Create first payment.
         $url = 'https://api.mollie.com/v2/payments';
 
         my $payment_values = {
@@ -316,8 +369,8 @@ post 'rkavv-aanmelden-verwerken' => sub {
         my $mollie_mandate      = from_json( $response->content );
 
         if ( $mollie_mandate ) {
-            $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' } );
-            $user->mollie_mandate_type( $mollie_mandate->{ 'method' } );
+            $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' }  );
+            $user->mollie_mandate_type( $mollie_mandate->{ 'method' }   );
             $user->mollie_payment_status( $mollie_mandate->{ 'status' } );
             $user->update;
         }
@@ -341,6 +394,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
             debug "Could not send email: $_";
         };
 
+        return 200;
     }
 
 };
