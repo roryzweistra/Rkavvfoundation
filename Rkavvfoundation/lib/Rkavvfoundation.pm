@@ -344,6 +344,8 @@ post 'rkavv-aanmelden-verwerken' => sub {
             debug "Could not send email: $_";
         };
 
+	status 200;
+        return 'OK';
     }
 
 };
