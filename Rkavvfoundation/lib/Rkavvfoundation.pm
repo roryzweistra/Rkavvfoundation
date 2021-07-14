@@ -145,6 +145,26 @@ post '/doneren' => sub {
             # $user->update;
 
     	    # Create first payment.
+            # Create first payment.
+            $url = 'https://api.mollie.com/v2/payments';
+
+            my $payment_values = {
+               'amount'	=> {
+                   'currency'	=> 'EUR',
+                    'value'		=> '0.01',
+                },
+                'customerId'        => $mollie_customer->{ 'id' },
+                'sequenceType'      => 'first',
+                'description'   	=> 'RKAVV Foundation incasso machtiging',
+                'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
+                'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+            };
+
+            $encoded_data       = encode_json( $payment_values );
+            $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+            $response           = $lwp->request( $r );
+            my $mollie_payment  = from_json( $response->content );
+
             $url = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
 
             my $interval_value = '1 month';
@@ -165,8 +185,6 @@ post '/doneren' => sub {
                 'description'   	=> 'Uw donatie aan RKAVV Foundation',
                 'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
             };
-
-            p $mollie_payment;
 
     	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
         }
@@ -334,8 +352,8 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
-	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
-
+	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+    }
 };
 
 post 'rkavv-aanmelden-verwerken' => sub {
