@@ -145,7 +145,7 @@ post '/doneren' => sub {
             # $user->update;
 
     	    # Create first payment.
-            $url = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+            $url = 'https://api.mollie.com/v2/customers/' . $mollie_customer->{ 'id' } . '/subscriptions';
 
             my $interval_value = '1 month';
 
@@ -166,9 +166,14 @@ post '/doneren' => sub {
                 'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
             };
 
-            p $mollie_payment;
+	    $encoded_data    = encode_json( $payment_values );
+            $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+            $lwp             = LWP::UserAgent->new;
+            $response        = $lwp->request( $r );
+            my $mollie_subscription = from_json( $response->content );
+            p $mollie_subscription;
 
-    	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+    	    return redirect $mollie_subscription->{ '_links' }->{ 'self' }->{ 'href' }, 303;
         }
     }
 
