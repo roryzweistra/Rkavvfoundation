@@ -14,21 +14,23 @@
     </div>
 </div>
 
-<!--<section class="section">
+<section class="section">
     <div class="container">
         <div class="home-search-box">
-            <form action="/donate" method="POST">
+            <form action="/doneren" method="POST">
                 <div class="field is-horizontal">
                     <div class="field-body">
                         <span class="donate-text">
                             Help ons met uw donatie
                         </span>
                         <div class="field">
-                            <div class="control has-icons-left">
-                                <input name="amount" class="input db-search-holiday-destination" type="number" placeholder="Bedrag">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-eur"></i>
-                                </span>
+                            <div class="control select is-expanded ">
+                                <select name="amount" placeholder="Bedrag">
+                                    <option selected="selected" value="3.00">3 euro</option>
+                                    <option value="5.00">5 euro</option>
+                                    <option value="10.00">10 euro</option>
+                                    <option value="15.00">15 euro</option>
+                                </select>
                             </div>
                         </div>
                         <div class="field">
@@ -38,7 +40,7 @@
                                     <option selected="selected" value="monthly">Maandelijks</option>
                                     <option value="one_off">Eenmalig</option>
                                     <option value="quarterly">Per kwartaal</option>
-                                    <option value="quarterly">Jaarlijks</option>
+                                    <option value="yearly">Jaarlijks</option>
                                 </select>
                             </div>
                         </div>
@@ -52,7 +54,7 @@
             </form>
         </div>
     </div>
-</section>-->
+</section>
 
 
 
