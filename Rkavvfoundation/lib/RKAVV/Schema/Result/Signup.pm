@@ -54,6 +54,18 @@ __PACKAGE__->table("signup");
   is_nullable: 1
   size: 20
 
+=head2 mollie_payment_id
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 20
+
+=head2 mollie_payment_status
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 20
+
 =head2 gender
 
   data_type: 'varchar'
@@ -282,6 +294,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 20 },
   "mollie_mandate_status",
   { data_type => "varchar", is_nullable => 1, size => 20 },
+  "mollie_payment_id",
+  { data_type => "varchar", is_nullable => 1, size => 20 },
+  "mollie_payment_status",
+  { data_type => "varchar", is_nullable => 1, size => 20 },
   "gender",
   { data_type => "varchar", is_nullable => 1, size => 1 },
   "first_name",
@@ -369,8 +385,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-06-24 12:27:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AfSUgcSIFJOuzMBZvUKcWg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-08 14:54:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dLFfTRekduuzJfVrm8c74Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

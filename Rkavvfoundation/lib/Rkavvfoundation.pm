@@ -186,7 +186,14 @@ post '/doneren' => sub {
                 'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
             };
 
-    	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+	    $encoded_data    = encode_json( $payment_values );
+            $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+            $lwp             = LWP::UserAgent->new;
+            $response        = $lwp->request( $r );
+            my $mollie_subscription = from_json( $response->content );
+            p $mollie_subscription;
+
+    	    return redirect $mollie_subscription->{ '_links' }->{ 'self' }->{ 'href' }, 303;
         }
     }
 
@@ -352,7 +359,12 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
+<<<<<<< HEAD
 	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+=======
+	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+
+>>>>>>> 1330a679caa9e033ca4c12b6241cdc2ab86eb49f
     }
 };
 
@@ -366,6 +378,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
     )->first;
 
     if ( $user ) {
+	 my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
         my $header          = [
             'Content-Type'  => 'application/json; charset=UTF-8',
             'Authorization' => 'Bearer ' . $api_key,
@@ -382,7 +395,8 @@ post 'rkavv-aanmelden-verwerken' => sub {
         # };
 
         #$encoded_data       = encode_json( $mandate_values );
-        my $r                  = HTTP::Request->new( 'GET', $url, $header, $encoded_data );
+    my $lwp             = LWP::UserAgent->new;
+        my $r                  = HTTP::Request->new( 'GET', $url, $header );
         my $response           = $lwp->request( $r );
         my $mollie_mandate      = from_json( $response->content );
 
@@ -412,7 +426,8 @@ post 'rkavv-aanmelden-verwerken' => sub {
             debug "Could not send email: $_";
         };
 
-        return 200;
+	status 200;
+        return 'OK';
     }
 
 };

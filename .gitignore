@@ -3,6 +3,6 @@ node_modules/
 local/
 Rkavvfoundation/MANIFEST*
 Rkavvfoundation/MakeFile*
-Rkavvfoundation/config.yml
+#Rkavvfoundation/config.yml
 Rkavvfoundation/environments/
 

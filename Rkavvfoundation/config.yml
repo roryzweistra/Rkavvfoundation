@@ -29,11 +29,11 @@ engines:
 
 plugins:
   DBIC:
-    Directbookers:
+    RKAVV:
       dsn: 'dbi:mysql:rkavv'
-      schema_class: 'Rkavv::Schema'
+      schema_class: 'RKAVV::Schema'
       user: 'root'
-      password: ''
+      password: 'rorgasme1'
       options:
         RaiseError: 1
         PrintError: 1
