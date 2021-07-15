@@ -128,9 +128,17 @@ post '/doneren' => sub {
             'Authorization' => 'Bearer ' . $api_key,
         ];
 
+	my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( {
+		'payment_amount'	=> $payment_amount,
+	} );
+
+    	if ( ! $user->in_storage ) {
+        	$user->insert;
+   	}
+
         my $mollie_values   = {
             'metadata'  => {
-                'session_id'    => $random
+                'session_id'    => $random,
             },
         };
 
@@ -178,14 +186,20 @@ get '/doneren/bevestigen' => sub {
 };
 
 get '/doneren/verwerken' => sub {
-    my $api_key = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
-    my $payment_id = body_parameters->get( 'id' );
+    my $api_key 	= 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
+    my $payment_id	= body_parameters->get( 'id' );
 
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
         {
             'me.mollie_payment_id' => $payment_id,
         }
     )->first;
+        
+    my $header          = [
+    	'Content-Type'  => 'application/json; charset=UTF-8',
+        'Authorization' => 'Bearer ' . $api_key,
+    ];
+
 
     if ( $user ) {
         my $header          = [
@@ -221,21 +235,21 @@ get '/doneren/verwerken' => sub {
             $start_date->add( 'months' => 12 );
         }
 
-        my $subscription_url    = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+        my $subscription_url    = 'https://api.mollie.com/v2/customers/' . $user->mollie_customer_id . '/subscriptions';
 
         my $interval_value = '1 month';
 
-        if ( $interval eq  'yearly' ) {
+        if ( $user->interval eq  'yearly' ) {
             $interval_value = '12 months';
         }
-        elsif ( $interval eq 'quarterly' ) {
+        elsif ( $user->interval eq 'quarterly' ) {
             $interval_value = '3 months';
         }
 
         my $payment_values = {
             'amount'	=> {
                 'currency'	=> 'EUR',
-                'value'		=> $payment_amount,
+                'value'		=> $user->payment_amount,
             },
             'description'   	=> 'Uw donatie aan RKAVV Foundation',
             'interval'          => $interval_value,
@@ -244,7 +258,7 @@ get '/doneren/verwerken' => sub {
         };
 
         my $encoded_data        = encode_json( $payment_values );
-        my $r                   = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+        my $r                   = HTTP::Request->new( 'POST', $subscription_url, $header, $encoded_data );
         my $lwp                 = LWP::UserAgent->new;
         my $response            = $lwp->request( $r );
         my $mollie_subscription = from_json( $response->content );
@@ -252,9 +266,6 @@ get '/doneren/verwerken' => sub {
 
     }
 
-
-
-    }
 
     status 200;
     return 'OK';
@@ -420,11 +431,7 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
-<<<<<<< HEAD
-    	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
-=======
 	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
->>>>>>> 2a730b5594c99c622734c7b0c27f7c5459897426
 
     }
 };
