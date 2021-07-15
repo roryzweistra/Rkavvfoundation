@@ -420,7 +420,11 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
+<<<<<<< HEAD
     	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+=======
+	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+>>>>>>> 2a730b5594c99c622734c7b0c27f7c5459897426
 
     }
 };
