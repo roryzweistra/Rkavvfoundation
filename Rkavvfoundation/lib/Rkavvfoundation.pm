@@ -128,13 +128,14 @@ post '/doneren' => sub {
             'Authorization' => 'Bearer ' . $api_key,
         ];
 
-	my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( {
-		'payment_amount'	=> $payment_amount,
-	} );
+	    my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( {
+            'payment_amount'	=> $payment_amount,
+            'interval'          => $interval,
+	    });
 
     	if ( ! $user->in_storage ) {
-        	$user->insert;
-   	}
+            $user->insert;
+   	    }
 
         my $mollie_values   = {
             'metadata'  => {
@@ -173,6 +174,10 @@ post '/doneren' => sub {
             $response           = $lwp->request( $r );
             my $mollie_payment  = from_json( $response->content );
 
+            if ( $mollie_payment ) {
+                $user->mollie_payment_id( $mollie_payment->{ 'id' } );
+                $user->update;
+
             return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
         }
@@ -194,7 +199,7 @@ post '/doneren/verwerken' => sub {
             'me.mollie_payment_id' => $payment_id,
         }
     )->first;
-        
+
     my $header          = [
     	'Content-Type'  => 'application/json; charset=UTF-8',
         'Authorization' => 'Bearer ' . $api_key,
