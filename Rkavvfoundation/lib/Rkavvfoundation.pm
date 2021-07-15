@@ -165,7 +165,7 @@ post '/doneren' => sub {
             $response           = $lwp->request( $r );
             my $mollie_payment  = from_json( $response->content );
 
-            $url = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+            $url = 'https://api.mollie.com/v2/customers/' . $mollie_customer->{ 'id' } . '/subscriptions';
 
             my $interval_value = '1 month';
 
@@ -176,7 +176,7 @@ post '/doneren' => sub {
                 $interval_value = '3 months';
             }
 
-            my $payment_values = {
+            my $subscription_values = {
         	    'amount'	=> {
         	    	'currency'	=> 'EUR',
                     'value'		=> $payment_amount,
@@ -186,7 +186,7 @@ post '/doneren' => sub {
                 'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
             };
 
-	    $encoded_data    = encode_json( $payment_values );
+	    $encoded_data    = encode_json( $subscription_values );
             $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
             $lwp             = LWP::UserAgent->new;
             $response        = $lwp->request( $r );
@@ -359,12 +359,8 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
-<<<<<<< HEAD
-	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
-=======
 	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
->>>>>>> 1330a679caa9e033ca4c12b6241cdc2ab86eb49f
     }
 };
 
