@@ -110,13 +110,14 @@ post '/doneren' => sub {
             'methods'   => $api->methods->all,
             'issuers'   => $api->issuers->all,
             'payment'   => $api->payments->create(
-                'amount'      => $payment_amount,
-                'redirectUrl' => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
-                'description' => "Donatie " . $random,
+                'amount'        => $payment_amount,
+                'description'   => "Donatie " . $random,
+                'redirectUrl'   => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+                'webhookUrl'    => 'https://www.rkavvfoundation.nl/doneren/verwerken',
             ),
         };
 
-        return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
+        return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' }, 303;
     }
     else {
         my $data    = {};
@@ -141,8 +142,8 @@ post '/doneren' => sub {
         my $mollie_customer = from_json( $response->content );
 
         if ( $mollie_customer ) {
-            # $user->mollie_customer_id( $mollie_customer->{ 'id' } );
-            # $user->update;
+            $user->mollie_customer_id( $mollie_customer->{ 'id' } );
+            $user->update;
 
     	    # Create first payment.
             $url = 'https://api.mollie.com/v2/payments';
@@ -152,11 +153,11 @@ post '/doneren' => sub {
                    'currency'	=> 'EUR',
                     'value'		=> $payment_amount,
                 },
-                'customerId'        => $mollie_customer->{ 'id' },
+                'customerId'        => $user->mollie_customer_id,
                 'sequenceType'      => 'first',
                 'description'   	=> 'RKAVV Foundation donatie',
-                'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
-                'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+                'redirectUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+                'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/verwerken',
             };
 
             $encoded_data       = encode_json( $payment_values );
@@ -164,38 +165,99 @@ post '/doneren' => sub {
             $response           = $lwp->request( $r );
             my $mollie_payment  = from_json( $response->content );
 
-            $url = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+            return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
-            my $interval_value = '1 month';
+        }
 
-            if ( $interval eq  'yearly' ) {
-                $interval_value = '12 months';
-            }
-            elsif ( $interval eq 'quarterly' ) {
-                $interval_value = '3 months';
-            }
+    }
 
-            my $payment_values = {
-        	    'amount'	=> {
-        	    	'currency'	=> 'EUR',
-                    'value'		=> $payment_amount,
-                },
-                'interval'          => $interval_value,
-                'description'   	=> 'Uw donatie aan RKAVV Foundation',
-                'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
-            };
+};
 
-	    $encoded_data    = encode_json( $payment_values );
-            $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
-            $lwp             = LWP::UserAgent->new;
-            $response        = $lwp->request( $r );
-            my $mollie_subscription = from_json( $response->content );
-            p $mollie_subscription;
+get '/doneren/bevestigen' => sub {
+    return template 'doneren_bevestigen.tt', {}, { 'layout' => 'main.tt' };
+};
 
-    	    return redirect $mollie_subscription->{ '_links' }->{ 'self' }->{ 'href' }, 303;
+get '/doneren/verwerken' => sub {
+    my $api_key = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
+    my $payment_id = body_parameters->get( 'id' );
+
+    my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
+        {
+            'me.mollie_payment_id' => $payment_id,
+        }
+    )->first;
+
+    if ( $user ) {
+        my $header          = [
+            'Content-Type'  => 'application/json; charset=UTF-8',
+            'Authorization' => 'Bearer ' . $api_key,
+        ];
+
+        my $url = 'https://api.mollie.com/v2/payments/' . $payment_id . '?testmode=true';
+
+        my $lwp             = LWP::UserAgent->new;
+        my $r               = HTTP::Request->new( 'GET', $url, $header );
+        my $response        = $lwp->request( $r );
+        my $mollie_mandate  = from_json( $response->content );
+
+        if ( $mollie_mandate ) {
+            $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' }  );
+            $user->mollie_mandate_type( $mollie_mandate->{ 'method' }   );
+            $user->mollie_payment_status( $mollie_mandate->{ 'status' } );
+            $user->update;
         }
     }
 
+    if ( $user->interval ) {
+        my $start_date = DateTime->now;
+
+        if ( $user->interval eq 'monthly' ) {
+            $start_date->add( 'months' => 1 );
+        }
+        elsif ( $user->interval eq 'quarterly' ) {
+            $start_date->add( 'months' => 3 );
+        }
+        elsif ( $user->interval eq 'yearly' ) {
+            $start_date->add( 'months' => 12 );
+        }
+
+        my $subscription_url    = 'https://api.mollie.com/v2/customers/' . $mollie_custmoer->{ 'id' } . '/subscriptions';
+
+        my $interval_value = '1 month';
+
+        if ( $interval eq  'yearly' ) {
+            $interval_value = '12 months';
+        }
+        elsif ( $interval eq 'quarterly' ) {
+            $interval_value = '3 months';
+        }
+
+        my $payment_values = {
+            'amount'	=> {
+                'currency'	=> 'EUR',
+                'value'		=> $payment_amount,
+            },
+            'description'   	=> 'Uw donatie aan RKAVV Foundation',
+            'interval'          => $interval_value,
+            'startDate'         => $start_date->ymd,
+            'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
+        };
+
+        my $encoded_data        = encode_json( $payment_values );
+        my $r                   = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+        my $lwp                 = LWP::UserAgent->new;
+        my $response            = $lwp->request( $r );
+        my $mollie_subscription = from_json( $response->content );
+        p $mollie_subscription;
+
+    }
+
+
+
+    }
+
+    status 200;
+    return 'OK';
 };
 
 post '/rkavv-aanmelden' => sub {
@@ -358,12 +420,8 @@ post '/rkavv-aanmelden' => sub {
 
         p $mollie_payment;
 
-<<<<<<< HEAD
-	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
-=======
-	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+    	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
->>>>>>> 1330a679caa9e033ca4c12b6241cdc2ab86eb49f
     }
 };
 
