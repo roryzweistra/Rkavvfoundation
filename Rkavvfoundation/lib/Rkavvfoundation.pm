@@ -145,17 +145,16 @@ post '/doneren' => sub {
             # $user->update;
 
     	    # Create first payment.
-            # Create first payment.
             $url = 'https://api.mollie.com/v2/payments';
 
             my $payment_values = {
                'amount'	=> {
                    'currency'	=> 'EUR',
-                    'value'		=> '0.01',
+                    'value'		=> $payment_amount,
                 },
                 'customerId'        => $mollie_customer->{ 'id' },
                 'sequenceType'      => 'first',
-                'description'   	=> 'RKAVV Foundation incasso machtiging',
+                'description'   	=> 'RKAVV Foundation donatie',
                 'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
                 'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/doneren/bevestigen',
             };
