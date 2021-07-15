@@ -185,7 +185,7 @@ get '/doneren/bevestigen' => sub {
     return template 'doneren_bevestigen.tt', {}, { 'layout' => 'main.tt' };
 };
 
-get '/doneren/verwerken' => sub {
+post '/doneren/verwerken' => sub {
     my $api_key 	= 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
     my $payment_id	= body_parameters->get( 'id' );
 
@@ -222,7 +222,7 @@ get '/doneren/verwerken' => sub {
         }
     }
 
-    if ( $user->interval ) {
+    if ( $user && $user->interval ) {
         my $start_date = DateTime->now;
 
         if ( $user->interval eq 'monthly' ) {
