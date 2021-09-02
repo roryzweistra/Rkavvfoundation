@@ -343,7 +343,7 @@
           is het belangrijk dat bovenstaande gegevens allemaal
           van de speler zijn, daarbij ook het mailadres.</div>
 
-                                    <div class="js-toggle-guardian">
+                                    <div class="js-toggle-guardian" style="display: none;">
                                         <div class="content">Van de ouders hebben we een mailadres nodig waar de
           factuur heen gestuurd kan worden, tevens kunt u dan in een eigen account aanmaken op voetbal.nl
           en controle hebben over de privacy van foto en naam in de app, tevens kunt u bij wijziging van naw
@@ -632,8 +632,6 @@
     </div>
 
 <script type="text/javascript">
-    var canvas = document.querySelector("canvas");
-    var signaturePad = new SignaturePad(canvas);
 
     $( document ).on( 'change', '.js-birthdate-year', function( e ) {
         var $self = $( this );
