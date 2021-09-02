@@ -17,6 +17,16 @@
                     </p>
 
                 </div>
+
+                <div class="column">
+
+                    <h2 class="subtitle">E-mail</h2>
+                    <p>
+                    <a href="mailto:info@rkavvfoundation.nl">info@rkavvfoundation.nl</a><br />
+                    </p>
+
+                </div>
+                
                 <div class="column">
 
                     <h2 class="subtitle">Bezoekadres</h2>
@@ -36,6 +46,18 @@
                     2260AB Leidschendam<br />
                     </p>
                 </div>
+
+                <div class="column">
+
+                    <h2 class="subtitle">Zakelijke informatie</h2>
+                    <p>
+                    IBAN: NL64 RABO 0366 0814 62<br />
+                      KvK: 81113897<br />
+                    RSIN: 861937168<br />
+                    BTW-nummer: 861937168B01<br />
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
