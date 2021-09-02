@@ -125,7 +125,7 @@
                                                   </div>
 
                                                   <div class="select is-info">
-                                                      <select name="birthdate_year" class="is-expanded valid" placeholder="Jaar" aria-invalid="false">
+                                                      <select name="birthdate_year" class="is-expanded valid js-birthdate-year" placeholder="Jaar" aria-invalid="false">
                                                           <option disabled=""></option>
                                                               <option value="1921">1921</option>
                                                               <option value="1922">1922</option>
@@ -285,13 +285,13 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="address" class="input is-info  js-db-address-search-street" type="text" placeholder="Straat" value="Oude Trambaan 9">
+                                                      <input name="address" class="input is-info  js-db-address-search-street" type="text" placeholder="Straat" value="">
                                                   </p>
                                                   <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="place" class="input is-info  js-db-address-search-place valid" type="text" placeholder="Plaats" value="Leidschendam" aria-invalid="false">
+                                                      <input name="place" class="input is-info  js-db-address-search-place valid" type="text" placeholder="Plaats" value="" aria-invalid="false">
                                                   </p>
                                               </div>
                                           </div>
@@ -305,13 +305,13 @@
                                           <div class="field-body">
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="0642131654" aria-invalid="false">
+                                                      <input name="telephone" class="input is-info  valid" type="text" placeholder="Telefoon" value="" aria-invalid="false">
                                                   </p>
                                                   <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="email" class="input is-info  valid" type="text" placeholder="Text input" value="rory@zweistra.eu" aria-invalid="false">
+                                                      <input name="email" class="input is-info  valid" type="text" placeholder="Text input" value="" aria-invalid="false">
                                                   </p>
                                               </div>
                                           </div>
@@ -341,7 +341,10 @@
                                       <div class="content">
                                           <p>I.v.m. de toegang tot de app van voetbal.nl
           is het belangrijk dat bovenstaande gegevens allemaal
-          van de speler zijn, daarbij ook het mailadres. Van de ouders hebben we een mailadres nodig waar de
+          van de speler zijn, daarbij ook het mailadres.</div>
+
+                                    <div class="js-toggle-guardian">
+                                        <div class="content">Van de ouders hebben we een mailadres nodig waar de
           factuur heen gestuurd kan worden, tevens kunt u dan in een eigen account aanmaken op voetbal.nl
           en controle hebben over de privacy van foto en naam in de app, tevens kunt u bij wijziging van naw
           gegevens dit zelf aanpassen</p>
@@ -456,6 +459,8 @@
                                               </div>
                                           </div>
                                       </div>
+
+                                    </div> <!-- toggle guardian -->
 
                                       <div class="content">
                                           <ul>
@@ -622,10 +627,19 @@
 
               </div>
             </section>
-            <script type="text/javascript">
-              var canvas = document.querySelector("canvas");
-              var signaturePad = new SignaturePad(canvas);
-            </script>
 
         </div>
     </div>
+
+<script type="text/javascript">
+    var canvas = document.querySelector("canvas");
+    var signaturePad = new SignaturePad(canvas);
+
+    $( document ).on( 'change', '.js-birthdate-year', function( e ) {
+        var $self = $( this );
+        if ( $self.val() >= '2005' ) {
+            $( '.js-toggle-guardian' ).toggleClass( 'hide' );
+        }
+    });
+
+</script>
