@@ -66,16 +66,16 @@ __PACKAGE__->table("signup");
   is_nullable: 1
   size: 20
 
-=head2 interval
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 20
-
 =head2 payment_amount
 
   data_type: 'double precision'
   is_nullable: 1
+
+=head2 payment_interval
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 20
 
 =head2 gender
 
@@ -309,10 +309,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 20 },
   "mollie_payment_status",
   { data_type => "varchar", is_nullable => 1, size => 20 },
-  "interval",
-  { data_type => "varchar", is_nullable => 1, size => 20 },
   "payment_amount",
   { data_type => "double precision", is_nullable => 1 },
+  "payment_interval",
+  { data_type => "varchar", is_nullable => 1, size => 20 },
   "gender",
   { data_type => "varchar", is_nullable => 1, size => 1 },
   "first_name",
@@ -400,8 +400,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-15 09:21:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RmlQ+6fE2NLTKZB2vCXGFw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-15 10:15:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2JwEWJlDw2EUSBG0+veIdA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

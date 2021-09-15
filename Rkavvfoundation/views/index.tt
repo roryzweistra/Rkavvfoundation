@@ -37,10 +37,10 @@
                             <div class="control select is-expanded ">
                                 <select name="interval" placeholder="Maandelijks">
                                     <option disabled="">Maak een keuze:</option>
-                                    <option selected="selected" value="monthly">Maandelijks</option>
-                                    <option value="one_off">Eenmalig</option>
-                                    <option value="quarterly">Per kwartaal</option>
-                                    <option value="yearly">Jaarlijks</option>
+                                    <option disabled="" value="monthly">Maandelijks</option>
+                                    <option selected="selected"value="one_off">Eenmalig</option>
+                                    <option disabled="" value="quarterly">Per kwartaal</option>
+                                    <option disabled="" value="yearly">Jaarlijks</option>
                                 </select>
                             </div>
                         </div>

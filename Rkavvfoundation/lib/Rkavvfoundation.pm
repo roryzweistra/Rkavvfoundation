@@ -376,7 +376,6 @@ post '/rkavv-aanmelden' => sub {
     }
 
 	use Data::Printer;
-	p $data;
 
     # Create record in db.
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $data );
@@ -438,11 +437,10 @@ post '/rkavv-aanmelden' => sub {
         $user->mollie_payment_status( 'open' );
         $user->update;
 
-        p $mollie_payment;
-
-	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
     }
+
 };
 
 post 'rkavv-aanmelden-verwerken' => sub {
@@ -455,7 +453,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
     )->first;
 
     if ( $user ) {
-	 my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
+	    my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
         my $header          = [
             'Content-Type'  => 'application/json; charset=UTF-8',
             'Authorization' => 'Bearer ' . $api_key,
@@ -472,10 +470,10 @@ post 'rkavv-aanmelden-verwerken' => sub {
         # };
 
         #$encoded_data       = encode_json( $mandate_values );
-    	my $lwp             = LWP::UserAgent->new;
-        my $r                  = HTTP::Request->new( 'GET', $url, $header );
-        my $response           = $lwp->request( $r );
-        my $mollie_mandate      = from_json( $response->content );
+        my $lwp             = LWP::UserAgent->new;
+        my $r               = HTTP::Request->new( 'GET', $url, $header );
+        my $response        = $lwp->request( $r );
+        my $mollie_mandate  = from_json( $response->content );
 
         if ( $mollie_mandate ) {
             $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' }  );
@@ -486,24 +484,117 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
         use Dancer2::Plugin::Email;
 
-        my $text = "Naam: " . $user->first_name . ' ' . $user->last_name . "\n";
+        my ( $y, $m, $d ) = split( /\D/, $user->birthdate );
+        my $b_dt    = DateTime->new( 'year' => $y, 'month' => $m, 'day' => $d );
+        my $now     = DateTime->now;
+        my $diff    = $now->subtract_datetime( $b_dt );
+        my $subject = 'Aanmelding ';
+
+        my $to_email        = '';
+        my $gender_suffix   = 'jo';
+
+        if ( $diff->years < 5 ) {
+            $to_email = 'peutervoetbal@rkavv.nl';
+            $subject .= $gender_suffix . $diff->years;
+        }
+        elsif ( $diff->years == 5 || $diff->years == 6 || $diff->years == 7  ) {
+            $to_email = 'jo6-jo9@rkavv.nl';
+            $subject .= $gender_suffix . int( $diff->years + 1 );
+        }
+        elsif ( $diff->years == 8 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo11@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo6-jo9@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+        elsif ( $diff->years == 9 || $diff->years == 10 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo11@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo11@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+        elsif ( $diff->years == 11 || $diff->years == 12 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo13@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo13@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+        elsif ( $diff->years == 13 || $diff->years == 14 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo15@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo15@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+        elsif ( $diff->years == 15 || $diff->years == 16 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo17@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo17@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+        elsif ( $diff->years == 17 || $diff->years == 18 ) {
+
+            if ( $user->gender eq 'f' ) {
+                $to_email = 'mo19@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+            else {
+                $to_email = 'jo19@rkavv.nl';
+                $subject .= $gender_suffix . int( $diff->years + 1 );
+            }
+
+        }
+
+        my $text = ' '. $user->first_name . ' ' . $user->last_name;
+        my $body = template 'rkavv_aanmelden_confirmation.tt' { 'data' => $user };
+
+        $o_email = 'rory@ryuu.nl';
 
         try {
             set layout => '';
             email {
                 from    => 'rory@ryuu.nl',
-                to      => 'rory@ryuu.nl',
+                to      => $to_email,
                 #to      => 'rory@ryuu.nl',
                 subject => "Aanmelding",
-                body    => $text,
-                type    => 'text',
+                body    => $body,
+                type    => 'html',
             };
         }
         catch {
             debug "Could not send email: $_";
         };
 
-	status 200;
+	    status 200;
         return 'OK';
     }
 
