@@ -102,7 +102,7 @@ post '/doneren' => sub {
     my $random          = session->id;
     my $payment_amount  = body_parameters->get( 'amount'    );
     my $interval        = body_parameters->get( 'interval'  );
-    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
+    my $api_key         = 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
 
     if ( $interval eq 'one_off' ) {
         my $api             = Business::MollieAPI->new( api_key => $api_key );
@@ -117,7 +117,8 @@ post '/doneren' => sub {
             ),
         };
 
-        return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' }, 303;
+        #return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' }, 303;
+        return redirect $mollie->{ 'payment' }->{ 'links' }->{ 'paymentUrl' };
     }
     else {
         my $data    = {};
@@ -128,14 +129,16 @@ post '/doneren' => sub {
             'Authorization' => 'Bearer ' . $api_key,
         ];
 
-	    my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( {
-            'payment_amount'	=> $payment_amount,
-            'interval'          => $interval,
-	    });
+	my $user_data = {
+		'payment_amount' => $payment_amount,
+		'payment_interval' => $interval,
+	};
+	
+        my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $user_data );
 
     	if ( ! $user->in_storage ) {
             $user->insert;
-   	    }
+   	}
 
         my $mollie_values   = {
             'metadata'  => {
@@ -160,7 +163,7 @@ post '/doneren' => sub {
             my $payment_values = {
                'amount'	=> {
                    'currency'	=> 'EUR',
-                    'value'		=> $payment_amount,
+                    'value'		=> sprintf( "%.2f", $payment_amount ),
                 },
                 'customerId'        => $user->mollie_customer_id,
                 'sequenceType'      => 'first',
@@ -178,9 +181,10 @@ post '/doneren' => sub {
                 $user->mollie_payment_id( $mollie_payment->{ 'id' } );
                 $user->update;
 
-            return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+           	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' };
 
-        }
+             }
+	}
 
     }
 
@@ -191,7 +195,7 @@ get '/doneren/bevestigen' => sub {
 };
 
 post '/doneren/verwerken' => sub {
-    my $api_key 	= 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
+    my $api_key 	= 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
     my $payment_id	= body_parameters->get( 'id' );
 
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
@@ -212,7 +216,7 @@ post '/doneren/verwerken' => sub {
             'Authorization' => 'Bearer ' . $api_key,
         ];
 
-        my $url = 'https://api.mollie.com/v2/payments/' . $payment_id . '?testmode=true';
+        my $url = 'https://api.mollie.com/v2/payments/' . $payment_id;
 
         my $lwp             = LWP::UserAgent->new;
         my $r               = HTTP::Request->new( 'GET', $url, $header );
@@ -227,16 +231,16 @@ post '/doneren/verwerken' => sub {
         }
     }
 
-    if ( $user && $user->interval ) {
+    if ( $user && $user->payment_interval ) {
         my $start_date = DateTime->now;
 
-        if ( $user->interval eq 'monthly' ) {
+        if ( $user->payment_interval eq 'monthly' ) {
             $start_date->add( 'months' => 1 );
         }
-        elsif ( $user->interval eq 'quarterly' ) {
+        elsif ( $user->payment_interval eq 'quarterly' ) {
             $start_date->add( 'months' => 3 );
         }
-        elsif ( $user->interval eq 'yearly' ) {
+        elsif ( $user->payment_interval eq 'yearly' ) {
             $start_date->add( 'months' => 12 );
         }
 
@@ -244,17 +248,17 @@ post '/doneren/verwerken' => sub {
 
         my $interval_value = '1 month';
 
-        if ( $user->interval eq  'yearly' ) {
+        if ( $user->payment_interval eq  'yearly' ) {
             $interval_value = '12 months';
         }
-        elsif ( $user->interval eq 'quarterly' ) {
+        elsif ( $user->payment_interval eq 'quarterly' ) {
             $interval_value = '3 months';
         }
 
         my $payment_values = {
             'amount'	=> {
                 'currency'	=> 'EUR',
-                'value'		=> $user->payment_amount,
+                'value'		=> sprintf( "%.2f", $user->payment_amount ),
             },
             'description'   	=> 'Uw donatie aan RKAVV Foundation',
             'interval'          => $interval_value,
@@ -468,7 +472,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         # };
 
         #$encoded_data       = encode_json( $mandate_values );
-    my $lwp             = LWP::UserAgent->new;
+    	my $lwp             = LWP::UserAgent->new;
         my $r                  = HTTP::Request->new( 'GET', $url, $header );
         my $response           = $lwp->request( $r );
         my $mollie_mandate      = from_json( $response->content );
