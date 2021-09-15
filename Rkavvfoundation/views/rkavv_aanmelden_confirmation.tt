@@ -30,3 +30,12 @@ E-mail: [% data.person_2_email %]<br />
 <h2>ID</h2>
 ID: [% data.id_type %]<br />
 Nummer: [% data.id_number %]<br />
+
+<h2>Vrijwilligers</h2>
+Ik ga akkoord met de vrijwilligersvoorwaarden: [% data.consent_volunteer %]<br />
+
+<h2>Contributie</h2>
+Termijnen: [% data.payment_term %]<br />
+IBAN: [% data.account_iban %]<br />
+Naam: [% data.account_name %]<br />
+Plaats:[% data.account_place %]<br />
