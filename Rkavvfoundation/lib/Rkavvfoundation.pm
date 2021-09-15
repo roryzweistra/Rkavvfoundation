@@ -375,7 +375,7 @@ post '/rkavv-aanmelden' => sub {
         $data->{ $key } = body_parameters->get( $key );
     }
 
-    my $data->{ 'birthdate' } = body_parameters->get( 'birthdate_year' ) . '-' . body_parameters->get( 'birthdate_month' ) . '-' . body_parameters->get( 'birthdate_day' );
+    $data->{ 'birthdate' } = body_parameters->get( 'birthdate_year' ) . '-' . body_parameters->get( 'birthdate_month' ) . '-' . body_parameters->get( 'birthdate_day' );
 
 	use Data::Printer;
 
@@ -501,17 +501,17 @@ post 'rkavv-aanmelden-verwerken' => sub {
         }
         elsif ( $diff->years == 5 || $diff->years == 6 || $diff->years == 7  ) {
             $to_email = 'jo6-jo9@rkavv.nl';
-            $subject .= $gender_suffix . int( $diff->years + 1 );
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
         }
         elsif ( $diff->years == 8 ) {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo11@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo6-jo9@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
@@ -519,11 +519,11 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo11@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo11@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
@@ -531,11 +531,11 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo13@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo13@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
@@ -543,11 +543,11 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo15@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo15@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
@@ -555,11 +555,11 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo17@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo17@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
@@ -567,18 +567,19 @@ post 'rkavv-aanmelden-verwerken' => sub {
 
             if ( $user->gender eq 'f' ) {
                 $to_email = 'mo19@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
             else {
                 $to_email = 'jo19@rkavv.nl';
-                $subject .= $gender_suffix . int( $diff->years + 1 );
+                $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
             }
 
         }
 
-        my $text = ' '. $user->first_name . ' ' . $user->last_name;
-        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => $user }, { 'layout' => undef };
-
+        $subject .= ' '. $user->first_name . ' ' . $user->last_name;
+        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => { $user->get_columns } }, { 'layout' => undef };
+debug $subject;
+p $body;
         $to_email = 'rory@ryuu.nl';
 
         try {
