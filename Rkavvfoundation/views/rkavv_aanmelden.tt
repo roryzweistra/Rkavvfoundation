@@ -273,6 +273,7 @@
                                                   <p class="control is-expanded">
                                                       <input name="number" class="input is-info js-db-address-search-number" type="text" placeholder="Huisnummer" value="">
                                                   </p>
+                                                  <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                           </div>
                                       </div>
@@ -293,6 +294,7 @@
                                                   <p class="control is-expanded">
                                                       <input name="place" class="input is-info  js-db-address-search-place valid" type="text" placeholder="Plaats" value="" aria-invalid="false">
                                                   </p>
+                                                  <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                           </div>
                                       </div>
@@ -311,8 +313,9 @@
                                               </div>
                                               <div class="field">
                                                   <p class="control is-expanded">
-                                                      <input name="email" class="input is-info  valid" type="text" placeholder="Text input" value="" aria-invalid="false">
+                                                      <input name="email" class="input is-info  valid" type="text" placeholder="E-mail" value="" aria-invalid="false">
                                                   </p>
+                                                  <p class="help is-danger has-text-left">* Verplicht</p>
                                               </div>
                                           </div>
                                       </div>
@@ -499,7 +502,6 @@
 
                                       <div class="content">
                                           <ul>
-                                              <li>Intake gesprek gehad met coordinator <label>JA<input name="intake" type="radio" value="1" /></label> <label>NEE<input name="intake" type="radio" value="0" /></label></li>
                                               <li>Met ondertekening van dit inschrijfformulier ga je akkoord met het betalen van de
           verschuldigde contributie. Contributie is altijd voor een volledig jaar vooraf verschuldigd!
           Opzeggen van het lidmaatschap moet uiterlijk vóór 31 mei van elk jaar. Na deze datum is
