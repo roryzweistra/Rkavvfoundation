@@ -133,7 +133,7 @@ post '/doneren' => sub {
 		'payment_amount' => $payment_amount,
 		'payment_interval' => $interval,
 	};
-	
+
         my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $user_data );
 
     	if ( ! $user->in_storage ) {
@@ -374,6 +374,8 @@ post '/rkavv-aanmelden' => sub {
     foreach my $key ( @allowed ) {
         $data->{ $key } = body_parameters->get( $key );
     }
+
+    my $data->{ 'birthdate' } = body_parameters->get( 'birthdate_year' ) . '-' . body_parameters->get( 'birthdate_month' ) . '-' . body_parameters->get( 'birthdate_day' );
 
 	use Data::Printer;
 
