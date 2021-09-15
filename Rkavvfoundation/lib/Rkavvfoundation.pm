@@ -372,7 +372,6 @@ post '/rkavv-aanmelden' => sub {
     }
 
 	use Data::Printer;
-	p $data;
 
     # Create record in db.
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $data );
@@ -434,11 +433,10 @@ post '/rkavv-aanmelden' => sub {
         $user->mollie_payment_status( 'open' );
         $user->update;
 
-        p $mollie_payment;
-
-	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
 
     }
+
 };
 
 post 'rkavv-aanmelden-verwerken' => sub {
@@ -451,7 +449,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
     )->first;
 
     if ( $user ) {
-	 my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
+	    my $api_key = 'test_fj4WhFGbVtDfSUaxeGPUyweqT9Jz63';
         my $header          = [
             'Content-Type'  => 'application/json; charset=UTF-8',
             'Authorization' => 'Bearer ' . $api_key,
@@ -468,10 +466,10 @@ post 'rkavv-aanmelden-verwerken' => sub {
         # };
 
         #$encoded_data       = encode_json( $mandate_values );
-    my $lwp             = LWP::UserAgent->new;
-        my $r                  = HTTP::Request->new( 'GET', $url, $header );
-        my $response           = $lwp->request( $r );
-        my $mollie_mandate      = from_json( $response->content );
+        my $lwp             = LWP::UserAgent->new;
+        my $r               = HTTP::Request->new( 'GET', $url, $header );
+        my $response        = $lwp->request( $r );
+        my $mollie_mandate  = from_json( $response->content );
 
         if ( $mollie_mandate ) {
             $user->mollie_mandate_id( $mollie_mandate->{ 'mandateId' }  );
@@ -483,6 +481,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         use Dancer2::Plugin::Email;
 
         my $text = "Naam: " . $user->first_name . ' ' . $user->last_name . "\n";
+        my $body = template 'rkavv_aanmelden_confirmation.tt' { 'data' => $user };
 
         try {
             set layout => '';
@@ -491,15 +490,15 @@ post 'rkavv-aanmelden-verwerken' => sub {
                 to      => 'rory@ryuu.nl',
                 #to      => 'rory@ryuu.nl',
                 subject => "Aanmelding",
-                body    => $text,
-                type    => 'text',
+                body    => $body,
+                type    => 'html',
             };
         }
         catch {
             debug "Could not send email: $_";
         };
 
-	status 200;
+	    status 200;
         return 'OK';
     }
 
