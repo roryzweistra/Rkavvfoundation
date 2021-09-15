@@ -485,7 +485,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         use Dancer2::Plugin::Email;
 
         my ( $y, $m, $d ) = split( /\D/, $user->birthdate );
-        my $b_dt    = DateTime->new( 'year' => $y, 'month' => $m, 'day' => $d );
+        my $b_dt    = DateTime->new( 'year' => $y, 'month' => int($m), 'day' => int($d) );
         my $now     = DateTime->now;
         my $diff    = $now->subtract_datetime( $b_dt );
         my $subject = 'Aanmelding ';
@@ -575,9 +575,9 @@ post 'rkavv-aanmelden-verwerken' => sub {
         }
 
         my $text = ' '. $user->first_name . ' ' . $user->last_name;
-        my $body = template 'rkavv_aanmelden_confirmation.tt' { 'data' => $user };
+        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => $user };
 
-        $o_email = 'rory@ryuu.nl';
+        $to_email = 'rory@ryuu.nl';
 
         try {
             set layout => '';
