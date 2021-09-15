@@ -34,12 +34,6 @@ Nummer: [% data.id_number %]<br />
 <h2>Vrijwilligers</h2>
 Ik ga akkoord met de vrijwilligersvoorwaarden: [% data.consent_volunteer %]<br />
 
-<h2>Toestemming</h2>
-Persoonsgegevens: [% data.consent_info %]<br />
-Contributie: [% data.consent_pay %]<br />
-Evenementen publicatie: [% data.consent_match %]<br />
-Media publicatie: [% data.consent_media %]<br />
-
 <h2>Contributie</h2>
 Termijnen: [% data.payment_term %]<br />
 IBAN: [% data.account_iban %]<br />
