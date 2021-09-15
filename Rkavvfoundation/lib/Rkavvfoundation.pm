@@ -577,7 +577,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         }
 
         my $text = ' '. $user->first_name . ' ' . $user->last_name;
-        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => $user };
+        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => $user }, { 'layout' => undef };
 
         $to_email = 'rory@ryuu.nl';
 
@@ -587,7 +587,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
                 from    => 'rory@ryuu.nl',
                 to      => $to_email,
                 #to      => 'rory@ryuu.nl',
-                subject => "Aanmelding",
+                subject => $subject,
                 body    => $body,
                 type    => 'html',
             };
