@@ -1,5 +1,4 @@
 
-
 <h2>Speler</h2>
 Geslacht: [% data.gender %]<br />
 Roepnaam: [% data.first_name %]<br />
@@ -16,18 +15,18 @@ E-mail: [% data.email %]<br />
 Categorie: [% data.category %]<br />
 
 <h2>Ouder / voogd 1</h2>
-Voornaam [% data.person_1_first_name %]<br />
-Initialen [% data.person_1_initials %]<br />
-Achternaam [% data.person_1_last_name %]<br />
-Telefoon [% data.person_1_telephone %]<br />
-E-mail [% data.person_1_email %]<br />
+Voornaam: [% data.person_1_first_name %]<br />
+Initialen: [% data.person_1_initials %]<br />
+Achternaam: [% data.person_1_last_name %]<br />
+Telefoon: [% data.person_1_telephone %]<br />
+E-mail: [% data.person_1_email %]<br />
 
 <h2>Ouder / voogd 2</h2>
-Voornaam [% data.person_2_first_name %]<br />
-Initialen [% data.person_2_initials %]<br />
-Achternaam [% data.person_2_last_name %]<br />
-Telefoon [% data.person_2_telephone %]<br />
-E-mail [% data.person_2_email %]<br />
+Voornaam: [% data.person_2_first_name %]<br />
+Initialen: [% data.person_2_initials %]<br />
+Achternaam: [% data.person_2_last_name %]<br />
+Telefoon: [% data.person_2_telephone %]<br />
+E-mail: [% data.person_2_email %]<br />
 
 <h2>ID</h2>
 ID: [% data.id_type %]<br />
