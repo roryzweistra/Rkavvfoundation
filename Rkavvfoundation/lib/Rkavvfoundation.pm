@@ -129,10 +129,10 @@ post '/doneren' => sub {
             'Authorization' => 'Bearer ' . $api_key,
         ];
 
-	my $user_data = {
-		'payment_amount' => $payment_amount,
-		'payment_interval' => $interval,
-	};
+    	my $user_data = {
+    		'payment_amount' => $payment_amount,
+    		'payment_interval' => $interval,
+    	};
 
         my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $user_data );
 
@@ -386,62 +386,177 @@ post '/rkavv-aanmelden' => sub {
         $user->insert;
     }
 
-    # Create customer in Mollie account.
-    my $header          = [
-        'Content-Type'  => 'application/json; charset=UTF-8',
-        'Authorization' => 'Bearer ' . $api_key,
-    ];
+    use Dancer2::Plugin::Email;
 
-    my $customer_email = $data->{ 'email' };
-    if ( $data->{ 'person_1_email' } ) {
-        $customer_email = $data->{ 'person_1_email' };
+    my ( $y, $m, $d ) = split( /\D/, $user->birthdate );
+    my $b_dt    = DateTime->new( 'year' => $y, 'month' => int($m), 'day' => int($d) );
+    my $now     = DateTime->now;
+    my $diff    = $now->subtract_datetime( $b_dt );
+    my $subject = 'Aanmelding ';
+
+    my $to_email        = '';
+    my $gender_suffix   = 'jo';
+
+    if ( $diff->years < 5 ) {
+        $to_email = 'peutervoetbal@rkavv.nl';
+        $subject .= $gender_suffix . $diff->years;
     }
-    elsif ( $data->{ 'person_2_email' } ) {
-        $customer_email = $data->{ 'person_2_email' };
+    elsif ( $diff->years == 5 || $diff->years == 6 || $diff->years == 7  ) {
+        $to_email = 'jo6-jo9@rkavv.nl';
+        $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+    }
+    elsif ( $diff->years == 8 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo11@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo6-jo9@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
+    }
+    elsif ( $diff->years == 9 || $diff->years == 10 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo11@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo11@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
+    }
+    elsif ( $diff->years == 11 || $diff->years == 12 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo13@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo13@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
+    }
+    elsif ( $diff->years == 13 || $diff->years == 14 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo15@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo15@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
+    }
+    elsif ( $diff->years == 15 || $diff->years == 16 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo17@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo17@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
+    }
+    elsif ( $diff->years == 17 || $diff->years == 18 ) {
+
+        if ( $user->gender eq 'f' ) {
+            $to_email = 'mo19@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+        else {
+            $to_email = 'jo19@rkavv.nl';
+            $subject .= $gender_suffix . ( int( $diff->years ) + 1 );
+        }
+
     }
 
-    my $mollie_values   = {
-        'name'  => $data->{ 'account_name' },
-        'email' => $customer_email,
+    $subject .= ' '. $user->first_name . ' ' . $user->last_name;
+    my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => { $user->get_columns } }, { 'layout' => undef };
+
+    $to_email = 'rory@ryuu.nl';
+
+
+    try {
+        set layout => '';
+        email {
+            from    => 'rory@ryuu.nl',
+            to      => $to_email,
+            #to      => 'rory@ryuu.nl',
+            subject => $subject,
+            body    => $body,
+            type    => 'html',
+        };
+    }
+    catch {
+        debug "Could not send email: $_";
     };
 
-    my $url             = 'https://api.mollie.com/v2/customers';
-    my $encoded_data    = encode_json( $mollie_values );
-    my $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
-    my $lwp             = LWP::UserAgent->new;
-    my $response        = $lwp->request( $r );
-    my $mollie_customer = from_json( $response->content );
-
-    if ( $mollie_customer ) {
-        $user->mollie_customer_id( $mollie_customer->{ 'id' } );
-        $user->update;
-
-	    # Create first payment.
-        $url = 'https://api.mollie.com/v2/payments';
-
-        my $payment_values = {
-    	    'amount'	=> {
-    	    	'currency'	=> 'EUR',
-                'value'		=> '0.01',
-            },
-            'customerId'        => $user->mollie_customer_id,
-            'sequenceType'      => 'first',
-            'description'   	=> 'RKAVV incasso machtiging',
-            'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
-            'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/rkavv-aanmelden-verwerken',
-        };
-
-        $encoded_data       = encode_json( $payment_values );
-        $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
-        $response           = $lwp->request( $r );
-        my $mollie_payment  = from_json( $response->content );
-        $user->mollie_payment_id( $mollie_payment->{ 'id' } );
-        $user->mollie_payment_status( 'open' );
-        $user->update;
-
-	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
-
-    }
+    return redirect 'https://www.rkavvfoundation.nl';
+    
+    # # Create customer in Mollie account.
+    # my $header          = [
+    #     'Content-Type'  => 'application/json; charset=UTF-8',
+    #     'Authorization' => 'Bearer ' . $api_key,
+    # ];
+    #
+    # my $customer_email = $data->{ 'email' };
+    # if ( $data->{ 'person_1_email' } ) {
+    #     $customer_email = $data->{ 'person_1_email' };
+    # }
+    # elsif ( $data->{ 'person_2_email' } ) {
+    #     $customer_email = $data->{ 'person_2_email' };
+    # }
+    #
+    # my $mollie_values   = {
+    #     'name'  => $data->{ 'account_name' },
+    #     'email' => $customer_email,
+    # };
+    #
+    # my $url             = 'https://api.mollie.com/v2/customers';
+    # my $encoded_data    = encode_json( $mollie_values );
+    # my $r               = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+    # my $lwp             = LWP::UserAgent->new;
+    # my $response        = $lwp->request( $r );
+    # my $mollie_customer = from_json( $response->content );
+    #
+    # if ( $mollie_customer ) {
+    #     $user->mollie_customer_id( $mollie_customer->{ 'id' } );
+    #     $user->update;
+    #
+	#     # Create first payment.
+    #     $url = 'https://api.mollie.com/v2/payments';
+    #
+    #     my $payment_values = {
+    # 	    'amount'	=> {
+    # 	    	'currency'	=> 'EUR',
+    #             'value'		=> '0.01',
+    #         },
+    #         'customerId'        => $user->mollie_customer_id,
+    #         'sequenceType'      => 'first',
+    #         'description'   	=> 'RKAVV incasso machtiging',
+    #         'redirectUrl'  	    => 'https://www.rkavvfoundation.nl',
+    #         'webhookUrl'  	    => 'https://www.rkavvfoundation.nl/rkavv-aanmelden-verwerken',
+    #     };
+    #
+    #     $encoded_data       = encode_json( $payment_values );
+    #     $r                  = HTTP::Request->new( 'POST', $url, $header, $encoded_data );
+    #     $response           = $lwp->request( $r );
+    #     my $mollie_payment  = from_json( $response->content );
+    #     $user->mollie_payment_id( $mollie_payment->{ 'id' } );
+    #     $user->mollie_payment_status( 'open' );
+    #     $user->update;
+    #
+	#     return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' }, 303;
+    #
+    # }
 
 };
 
@@ -577,7 +692,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
         }
 
         $subject .= ' '. $user->first_name . ' ' . $user->last_name;
-        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => { $user->get_columns } }, { 'layout' => undef }; 
+        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => { $user->get_columns } }, { 'layout' => undef };
 
         $to_email = 'rory@ryuu.nl';
 
