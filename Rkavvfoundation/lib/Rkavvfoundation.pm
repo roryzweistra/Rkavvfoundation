@@ -577,59 +577,10 @@ post 'rkavv-aanmelden-verwerken' => sub {
         }
 
         $subject .= ' '. $user->first_name . ' ' . $user->last_name;
-        my $body = "Speler\n
-        Geslacht:       $user->gender \n
-        Roepnaam:       $user->first_name \n
-        Initialen:      $user->initials \n
-        Achternaam:     $user->last_name \n
-        Geboortedatum:  $user->birthdate \n
-        Nationaliteit:  $user->nationality \n
-        Postcode:       $user->postcode \n
-        Huisnummer:     $user->number\ n
-        Straat:         $user->address \n
-        Plaats:         $user->place \n
-        Telefoon:       $user->telephone \n
-        E-mail:         $user->email \n
-        Categorie:      $user->category \n
-        \n
-        Ouder / voogd 1
-        Voornaam: $user->person_1_first_name \n
-        Initialen: $user->person_1_initials \n
-        Achternaam: $user->person_1_last_name \n
-        Telefoon: $user->person_1_telephone \n
-        E-mail: $user->person_1_email \n
-        \n
-        Ouder / voogd 2
-        Voornaam: $user->person_2_first_name \n
-        Initialen: $user->person_2_initials \n
-        Achternaam: $user->person_2_last_name \n
-        Telefoon: $user->person_2_telephone \n
-        E-mail: $user->person_2_email \n
-        \n
-        ID
-        ID: $user->id_type \n
-        Nummer: $user->id_number \n
-        \n
-        Toestemming
-        Geeft hierbij toestemming aan RKAVV om zijn/ haar persoonsgegevens te registeren: $user->consent_info \n
-        geeft toestemming dat RKAVV gegevens kan delen met (toekomstige) dienstverleners op het vlak van
-        diensten t.b.v. contributie inning: $user->consent_pay \n
-        geeft toestemming tot het maken van foto’s van voetbalwedstrijden, toernooien, evenementen
-        waaraan in club verband wordt meegedaan: $user->consent_match \n
-        geeft toestemming tot publicatie van foto’s, voor en achternaam in de krant, website of andere media
-        als dat betrekking heeft op activiteiten die in clubverband zijn gedaan: $user->consent_media \n
-        \n
-        Vrijwilligers
-        Ik ga akkoord met de vrijwilligersvoorwaarden: $user->consent_volunteer \n
-        \n
-        Contributie
-        Termijnen: $user->payment_term \n
-        IBAN: $user->account_iban \n
-        Naam: $user->account_name \n
-        Plaats:$user->account_place \n
-        ";
+        my $body = template 'rkavv_aanmelden_confirmation.tt', { 'data' => { $user->get_columns } }, { 'layout' => undef }; 
 
         $to_email = 'rory@ryuu.nl';
+
 
         try {
             set layout => '';
@@ -639,7 +590,7 @@ post 'rkavv-aanmelden-verwerken' => sub {
                 #to      => 'rory@ryuu.nl',
                 subject => $subject,
                 body    => $body,
-                type    => 'text',
+                type    => 'html',
             };
         }
         catch {
