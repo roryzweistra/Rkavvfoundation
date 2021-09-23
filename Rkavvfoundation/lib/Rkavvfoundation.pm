@@ -103,6 +103,7 @@ post '/doneren' => sub {
     my $payment_amount  = body_parameters->get( 'amount'    );
     my $interval        = body_parameters->get( 'interval'  );
     my $api_key         = 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
+    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
 
     if ( $interval eq 'one_off' ) {
         my $api             = Business::MollieAPI->new( api_key => $api_key );
@@ -130,8 +131,8 @@ post '/doneren' => sub {
         ];
 
     	my $user_data = {
-    		'payment_amount' => $payment_amount,
-    		'payment_interval' => $interval,
+    		'payment_amount'      => $payment_amount,
+    		'payment_interval'    => $interval,
     	};
 
         my $user = schema( 'RKAVV' )->resultset( 'Signup' )->create( $user_data );
@@ -181,11 +182,10 @@ post '/doneren' => sub {
                 $user->mollie_payment_id( $mollie_payment->{ 'id' } );
                 $user->update;
 
-           	return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' };
+           	    return redirect $mollie_payment->{ '_links' }->{ 'checkout' }->{ 'href' };
 
-             }
-	}
-
+            }
+	    }
     }
 
 };
@@ -196,6 +196,7 @@ get '/doneren/bevestigen' => sub {
 
 post '/doneren/verwerken' => sub {
     my $api_key 	= 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
+    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
     my $payment_id	= body_parameters->get( 'id' );
 
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
@@ -274,7 +275,6 @@ post '/doneren/verwerken' => sub {
         p $mollie_subscription;
 
     }
-
 
     status 200;
     return 'OK';
@@ -500,7 +500,7 @@ post '/rkavv-aanmelden' => sub {
     };
 
     return redirect 'https://www.rkavvfoundation.nl';
-    
+
     # # Create customer in Mollie account.
     # my $header          = [
     #     'Content-Type'  => 'application/json; charset=UTF-8',
