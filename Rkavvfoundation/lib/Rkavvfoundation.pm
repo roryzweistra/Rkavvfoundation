@@ -103,7 +103,6 @@ post '/doneren' => sub {
     my $payment_amount  = body_parameters->get( 'amount'    );
     my $interval        = body_parameters->get( 'interval'  );
     my $api_key         = 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
-    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
 
     if ( $interval eq 'one_off' ) {
         my $api             = Business::MollieAPI->new( api_key => $api_key );
@@ -196,7 +195,6 @@ get '/doneren/bevestigen' => sub {
 
 post '/doneren/verwerken' => sub {
     my $api_key 	= 'live_HnGJD4wuRmumbJfpjVGfUKpprSuPCy';
-    my $api_key         = 'test_ztwebqmHfg2ShM9fr8eJfQcfvbrRUd';
     my $payment_id	= body_parameters->get( 'id' );
 
     my $user = schema( 'RKAVV' )->resultset( 'Signup' )->search(
